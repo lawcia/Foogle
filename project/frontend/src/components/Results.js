@@ -29,13 +29,13 @@ class Results extends React.Component {
         axios.get(url, {headers})
         .then(response => {
            
-            this.setState({data : response}, () => this.leaflet())
+            this.setState({data : response.data}, () => this.leaflet())
          
         })
     }
 
     sortDistanceLowToHigh = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let distanceLowToHigh = array.sort((a,b) => {
             let distanceA = getDistance(
                 { latitude: this.props.latitude, longitude: this.props.longitude },
@@ -50,13 +50,13 @@ class Results extends React.Component {
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = distanceLowToHigh
+            data.restaurants = distanceLowToHigh
             return {data: data}
         })
     }
 
     sortDistanceHighToLow = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let distanceHighToLow = array.sort((a,b) => {
             let distanceA = getDistance(
                 { latitude: this.props.latitude, longitude: this.props.longitude },
@@ -71,58 +71,58 @@ class Results extends React.Component {
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = distanceHighToLow
+            data.restaurants = distanceHighToLow
             return {data: data}
         })
     }
 
     sortCostLowToHigh = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let costLowToHigh = array.sort((a,b) => {
             return a.restaurant.average_cost_for_two - b.restaurant.average_cost_for_two
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = costLowToHigh
+            data.restaurants = costLowToHigh
             return {data: data}
         })
     }
 
     sortRatingLowToHigh = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let ratingLowToHigh = array.sort((a,b) => {
             
             return parseFloat(a.restaurant.user_rating.aggregate_rating) - parseFloat(b.restaurant.user_rating.aggregate_rating)
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = ratingLowToHigh
+            data.restaurants = ratingLowToHigh
             return {data: data}
         })
     }
 
     sortCostHighToLow = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let costHighToLow = array.sort((a,b) => {
             return b.restaurant.average_cost_for_two - a.restaurant.average_cost_for_two
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = costHighToLow
+            data.restaurants = costHighToLow
             return {data: data}
         })
     }
 
     
     sortRatingHighToLow = () => {
-        let array = [...this.state.data.data.restaurants];
+        let array = [...this.state.data.restaurants];
         let ratingHighToLow = array.sort((a,b) => {
             
             return parseFloat(b.restaurant.user_rating.aggregate_rating) - parseFloat(a.restaurant.user_rating.aggregate_rating)
         })
         this.setState((prevState) => {
             let data = {...prevState.data}
-            data.data.restaurants = ratingHighToLow
+            data.restaurants = ratingHighToLow
             return {data: data}
         })
     }
@@ -141,7 +141,7 @@ class Results extends React.Component {
     let {layerGroup} = this.state
     let posMarker = L.marker([this.props.latitude, this.props.longitude]).addTo(layerGroup)
     posMarker.bindPopup(`<b>Finding places near here!</b>`).openPopup()
-    this.state.data.data.restaurants.map((restaurant) => { 
+    this.state.data.restaurants.map((restaurant) => { 
     let marker = L.marker([restaurant.restaurant.location.latitude, restaurant.restaurant.location.longitude]).addTo(layerGroup)
     marker.bindPopup(`<b>${restaurant.restaurant.name}</b><br/>${restaurant.restaurant.cuisines}<br/>Rating ${restaurant.restaurant.user_rating.aggregate_rating}`)
     this.setState({layerGroup: layerGroup})
@@ -216,7 +216,7 @@ class Results extends React.Component {
 
     filterByCuisine = () => {
         let cuisinesObj = new Object()
-        let cusineResults = this.state.data ? this.state.data.data.restaurants.map((item) => {
+        let cusineResults = this.state.data ? this.state.data.restaurants.map((item) => {
         let cuisinesStr = item.restaurant.cuisines
         let cuisinesArray = cuisinesStr.split(',')
             for(let i = 0; i < cuisinesArray.length; i++ ){
@@ -284,7 +284,7 @@ class Results extends React.Component {
                 </aside>
                 <div class="column">
                 
-                {this.state.data && this.state.data.data.restaurants.map((restaurant) => { 
+                {this.state.data && this.state.data.restaurants.map((restaurant) => { 
                     return (
                 <Restaurant res = {restaurant.restaurant} /> ) })}
                 </div>
