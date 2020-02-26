@@ -1,4 +1,5 @@
 ﻿# Foogle
+ ![](foogle-demo.gif)
 
 ![alt text](https://github.com/Yynx/RestaurantApp/blob/master/foogle.png "Foogle")
 ## About
