@@ -124,9 +124,6 @@ class App extends React.Component {
     }
     
     render() {
-        //console.log(this.state)
-        //console.log(this.state.latitude)
-        //console.log(this.state.error)
         return (
             <Router>
             <div>

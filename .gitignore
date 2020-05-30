@@ -5,5 +5,8 @@ project/project/.env
 *.pyc
 .DS_STORE
 /static
-node_modules/*
+node_modules
 .env
+__pycache__
+project/frontend/static/frontend
+
