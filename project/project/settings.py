@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import django_heroku
 import os
 import psycopg2
 from dotenv import load_dotenv
@@ -24,10 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ok0nc%fwshit=o^*+m2-&%*#562a38o)^9-^_&f%6+=ccq$$ej'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY', 'ok0nc%fwshit=o^*+m2-&%*#562a38o)^9-^_&f%6+=ccq$$ej')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
 
@@ -41,9 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api', # added
-    'frontend', # added
-    'rest_framework' # added
+    'api',  # added
+    'frontend',  # added
+    'rest_framework'  # added
 ]
 
 MIDDLEWARE = [
@@ -79,17 +81,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+if os.environ.get('ENV') == "PROD":
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES = {'default':{}}
+    DATABASES['default'].update(db_from_env)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'foogle_db',
-        'USER': os.environ.get('USER', 'postgres'),
-        'PASSWORD': os.environ.get('PASSWORD', ''),
-        'HOST': 'localhost',
-        'PORT': '5432'
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'foogle_db',
+            'USER': os.environ.get('USER', 'postgres'),
+            'PASSWORD': os.environ.get('PASSWORD', ''),
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
     }
-}
 
 
 # Password validation
@@ -111,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -128,9 +135,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
-
 
 
 REST_FRAMEWORK = {
@@ -151,5 +159,4 @@ JWT_AUTH = {
 }
 
 # Configure Django App for Heroku.
-import django_heroku
 django_heroku.settings(locals())
