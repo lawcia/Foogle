@@ -8,5 +8,5 @@ project/project/.env
 node_modules
 .env
 __pycache__
-project/frontend/static
-project/frontend/static/frontend/main.js
+project/frontend/static/frontend
+
