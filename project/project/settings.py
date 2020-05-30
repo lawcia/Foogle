@@ -149,3 +149,7 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
