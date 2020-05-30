@@ -1,7 +1,7 @@
 {
-  "name": "restaurantapp",
+  "name": "foogle",
   "version": "1.0.0",
-  "description": "![alt text](https://github.com/Yynx/RestaurantApp/blob/master/foogle.png \"Foogle\")",
+  "description": "An app that helps you find information about restaurants in your current location, or at a specified location. After creating an account, you can save restaurants to your favourites list!",
   "main": "index.js",
   "scripts": {
     "flush": "python ./project/manage.py flush --no-input",
@@ -17,13 +17,23 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^3.8.3"
+  },
+  "bugs": {
+    "url": "https://github.com/lawcia/RestaurantApp-1/issues"
+  },
+  "homepage": "https://github.com/lawcia/RestaurantApp-1#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "geolib": "^3.2.1",
+    "react-bulma-components": "^3.1.3",
+    "react-router-dom": "^5.1.2",
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^3.4.2",
-    "cypress": "^3.8.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -32,15 +42,5 @@
     "weak-key": "^1.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
-  },
-  "bugs": {
-    "url": "https://github.com/Yynx/RestaurantApp/issues"
-  },
-  "homepage": "https://github.com/Yynx/RestaurantApp#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "geolib": "^3.2.1",
-    "react-bulma-components": "^3.1.3",
-    "react-router-dom": "^5.1.2"
   }
 }
