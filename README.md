@@ -97,6 +97,11 @@ Type this in the command line to test the RESTful API:
 ```
 python manage.py test api
 ```
+
+## Scripts
+
+```npm start```
+
 ## Extending our app
 Ideas for future features to implement:
 - Ability to Drag & Drop items to your Favourites list
