@@ -11,13 +11,15 @@ const SearchLocationInput = ({ options }) => (
     <span className="icon is-small is-left">
       <i class="fas fa-map-marked-alt"></i>
     </span>
-    <div id="place-options">
-      {options.map(({ place_name }) => (
-        <p key={place_name} className="place-option">
-          {place_name}
-        </p>
-      ))}
-    </div>
+    {options.length > 0 && (
+      <div id="place-options">
+        {options.map(({ place_name }) => (
+          <p key={place_name} className="place-option">
+            {place_name}
+          </p>
+        ))}
+      </div>
+    )}
   </div>
 );
 

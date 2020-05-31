@@ -49,4 +49,10 @@ describe("<Search Location Input />", () => {
     expect(wrapper.find("#place-options").length).toEqual(1);
     expect(wrapper.find(".place-option").length).toEqual(4);
   })
+
+  it("should not render place-options div if features is empty", () => {
+    let searchWrapper = shallow(<SearchLocationInput options={[]} />);
+    expect(searchWrapper.find("#place-options").length).toEqual(0);
+  })
+  
 })
