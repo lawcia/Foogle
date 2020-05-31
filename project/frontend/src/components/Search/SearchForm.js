@@ -1,4 +1,5 @@
 import React from "react";
+import SearchLocationInput from "./SearchLocationInput";
 
 const SearchForm = (props) => {
   return (
@@ -17,19 +18,7 @@ const SearchForm = (props) => {
               <i class="fas fa-search"></i>
             </span>
           </div>
-          <div className="control has-icons-left stretch">
-            <input
-              className="input"
-              type="text"
-              name="searchLocation"
-              onChange={props.handleChangeLocation}
-              placeholder="79 Borough Road"
-            />
-            <span className="icon is-small is-left">
-              <i class="fas fa-map-marked-alt"></i>
-            </span>
-            <p>{this.props.match}</p>
-          </div>
+          <SearchLocationInput />
         </div>
         <button className="button is-primary margin" name="search">
           Search
