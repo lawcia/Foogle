@@ -42,8 +42,9 @@ describe("<Search Form />", () => {
 
   it("The value of textinput should match auto complete option when clicked", () => {
     const wrapper = mount(<SearchForm features={features} />);
+    expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
     wrapper.find(".place-option").at(1).simulate("click");
-    expect(wrapper.find("input[name='searchLocation']").value).toEqual("London, Ontario, Canada");
+    expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("London, Ontario, Canada");
   })
 
 })
