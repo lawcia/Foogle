@@ -81,23 +81,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'foogle_db',
+        'USER': os.environ.get('USER', 'postgres'),
+        'PASSWORD': os.environ.get('PASSWORD', ''),
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
+
 if os.environ.get('ENV') == "PROD":
     import dj_database_url
     db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES = {'default':{}}
     DATABASES['default'].update(db_from_env)
-
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'foogle_db',
-            'USER': os.environ.get('USER', 'postgres'),
-            'PASSWORD': os.environ.get('PASSWORD', ''),
-            'HOST': 'localhost',
-            'PORT': '5432'
-        }
-    }
 
 
 # Password validation
