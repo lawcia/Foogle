@@ -10,7 +10,7 @@
     "start:python": "python ./project/manage.py runserver",
     "start:react": "webpack --mode development ./project/frontend/src/index.js --output ./project/frontend/static/frontend/main.js --watch",
     "build": "webpack --mode production ./project/frontend/src/index.js --output ./project/frontend/static/frontend/main.js",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,9 @@
     "webpack-cli": "^3.3.10"
   },
   "jest": {
+    "setupFiles": [
+    "./project/frontend/src/setupTests.js"
+  ],
     "testPathIgnorePatterns": ["cypress"]
   }
 }
