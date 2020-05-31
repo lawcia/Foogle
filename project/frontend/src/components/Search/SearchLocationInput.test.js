@@ -36,9 +36,14 @@ describe("<Search Location Input />", () => {
     ];
 
   let wrapper;
+  let handleChange = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<SearchLocationInput options={features} />)
+    wrapper = shallow(<SearchLocationInput 
+                      options={features} 
+                      searchLocation=""
+                      setSearchLocation={jest.fn()}
+                      handleChange={handleChange}/>)
   })
 
   it("should render an text input", () => {
@@ -56,6 +61,15 @@ describe("<Search Location Input />", () => {
   it("should not render place-options div if features is empty", () => {
     let searchWrapper = shallow(<SearchLocationInput options={[]} />);
     expect(searchWrapper.find("#place-options").length).toEqual(0);
+  })
+  
+  it("onchange of searchLocation input, its value should match simulated input", () => {
+    const event = { target: { value: "London" }};
+    expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
+    
+    wrapper.find("input[name='searchLocation']").simulate("change", event)
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledWith(event);
   })
 
 })

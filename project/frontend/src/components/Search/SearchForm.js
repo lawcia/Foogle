@@ -6,7 +6,7 @@ const SearchForm = ({ features }) => {
   const [searchLocation, setSearchLocation] = useState("");
   
   const handleChange = (event) => {
-    const { name, value } = event;
+    const { name, value } = event.target;
     if (name === "searchLocation") setSearchLocation(value);
   }
 

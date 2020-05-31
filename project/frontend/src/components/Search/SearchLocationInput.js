@@ -7,7 +7,6 @@ const SearchLocationInput = ({
   searchLocation,
   handleChange,
 }) => {
-  console.log(searchLocation);
   return (
     <div className="control has-icons-left stretch">
       <input
@@ -16,7 +15,7 @@ const SearchLocationInput = ({
         name="searchLocation"
         placeholder="79 Borough Road"
         value={searchLocation}
-        onChange={handleChange}
+        onChange={(event) => handleChange(event)}
       />
       <span className="icon is-small is-left">
         <i class="fas fa-map-marked-alt"></i>
@@ -45,7 +44,7 @@ SearchLocationInput.protoTypes = {
   options: PropTypes.array.isRequired,
   setSearchLocation: PropTypes.func.isRequired,
   searchLocation: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default SearchLocationInput;
