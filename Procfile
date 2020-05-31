@@ -1,2 +1,2 @@
 release: python project/manage.py migrate
-web: gunicorn --chdir /project project.wsgi --log-file -
+web: gunicorn --pythonpath project project.wsgi --log-file -
