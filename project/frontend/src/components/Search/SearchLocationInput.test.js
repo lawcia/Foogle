@@ -48,11 +48,14 @@ describe("<Search Location Input />", () => {
   it("should render 4 auto complete place name options in div", () => {
     expect(wrapper.find("#place-options").length).toEqual(1);
     expect(wrapper.find(".place-option").length).toEqual(4);
+    expect(wrapper.find(".place-option").at(0).props()).toHaveProperty("tabIndex", "0");
+    expect(wrapper.find(".place-option").at(0).props()).toHaveProperty("role", "button")
+    expect(wrapper.find(".place-option").at(0).props()).toHaveProperty("aria-pressed", "false")
   })
 
   it("should not render place-options div if features is empty", () => {
     let searchWrapper = shallow(<SearchLocationInput options={[]} />);
     expect(searchWrapper.find("#place-options").length).toEqual(0);
   })
-  
+
 })

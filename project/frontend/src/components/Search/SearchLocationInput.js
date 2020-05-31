@@ -14,7 +14,13 @@ const SearchLocationInput = ({ options }) => (
     {options.length > 0 && (
       <div id="place-options">
         {options.map(({ place_name }) => (
-          <p key={place_name} className="place-option">
+          <p
+            key={place_name}
+            className="place-option"
+            tabIndex="0"
+            role="button"
+            aria-pressed="false"
+          >
             {place_name}
           </p>
         ))}
