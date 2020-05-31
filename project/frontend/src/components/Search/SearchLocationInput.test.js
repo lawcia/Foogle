@@ -45,7 +45,7 @@ describe("<Search Location Input />", () => {
     expect(wrapper.find("input[type='text']").length).toEqual(1);
   })
 
-  it("should render 4 place name options in div", () => {
+  it("should render 4 auto complete place name options in div", () => {
     expect(wrapper.find("#place-options").length).toEqual(1);
     expect(wrapper.find(".place-option").length).toEqual(4);
   })
