@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadFeatures } from "../../redux/actions/searchActions";
 
-const SearchForm = ({ features, loadFeatures }) => {
+export const SearchForm = ({ features, loadFeatures }) => {
   const [searchLocation, setSearchLocation] = useState("");
 
   const handleChange = (event) => {

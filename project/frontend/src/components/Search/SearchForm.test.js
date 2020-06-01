@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import SearchForm from "./SearchForm";
+import { SearchForm } from "./SearchForm";
 
 describe("<Search Form />", () => {
 
