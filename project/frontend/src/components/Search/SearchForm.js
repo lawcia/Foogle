@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import SearchLocationInput from "./SearchLocationInput";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const SearchForm = ({ features }) => {
   const [searchLocation, setSearchLocation] = useState("");
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "searchLocation") setSearchLocation(value);
-  }
+  };
 
   return (
     <form className="form">
@@ -47,4 +48,8 @@ SearchForm.protoTypes = {
   features: PropTypes.array.isRequired,
 };
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return { features: state.features };
+};
+
+export default connect(mapStateToProps)(SearchForm);
