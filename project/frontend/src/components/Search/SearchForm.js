@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import SearchLocationInput from "./SearchLocationInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { loadFeatures } from "../../redux/actions/searchActions";
 
-const SearchForm = ({ features }) => {
+const SearchForm = ({ features, loadFeatures }) => {
   const [searchLocation, setSearchLocation] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "searchLocation") setSearchLocation(value);
+    if (name === "searchLocation") {
+      setSearchLocation(value);
+      loadFeatures(searchLocation)
+        .then(() => {})
+        .catch((error) => console.log(error));
+    }
   };
 
   return (
@@ -46,10 +52,15 @@ const SearchForm = ({ features }) => {
 
 SearchForm.protoTypes = {
   features: PropTypes.array.isRequired,
+  loadFeatures: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return { features: state.features };
 };
 
-export default connect(mapStateToProps)(SearchForm);
+const mapDispatchToProps = {
+  loadFeatures,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
