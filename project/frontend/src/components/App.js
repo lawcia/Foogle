@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Navigation from "./Navigation";
 import HomePage from "./Pages/HomePage";
 import Results from "./Results";
@@ -195,5 +194,4 @@ class App extends React.Component {
   }
 }
 
-const wrapper = document.getElementById("app");
-wrapper ? ReactDOM.render(<App />, wrapper) : null;
+export default App;

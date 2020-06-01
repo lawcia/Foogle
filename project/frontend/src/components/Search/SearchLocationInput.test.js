@@ -63,7 +63,7 @@ describe("<Search Location Input />", () => {
     expect(searchWrapper.find("#place-options").length).toEqual(0);
   })
   
-  it("onchange of searchLocation input, its value should match simulated input", () => {
+  it("onchange of searchLocation input should call handle change", () => {
     const event = { target: { value: "London" }};
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
     
