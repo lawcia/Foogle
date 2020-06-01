@@ -8,6 +8,12 @@ export function loadFeaturesSuccess(features) {
   }
 }
 
+export function apiCallError() {
+  return {
+    type: types.API_CALL_ERROR
+  }
+}
+
 export function loadFeatures(searchLocation) {
   return function (dispatch) {
     return (
@@ -15,7 +21,9 @@ export function loadFeatures(searchLocation) {
       .convertSearchLocationToCoordinates(searchLocation)
       .then(features => {
         dispatch(loadFeaturesSuccess(features))
-      }).catch(error => console.log(error))
+      }).catch(() => {
+        dispatch(apiCallError())
+      })
     )
   }
 }
