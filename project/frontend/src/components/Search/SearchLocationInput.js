@@ -18,7 +18,7 @@ const SearchLocationInput = ({
         onChange={(event) => handleChange(event)}
       />
       <span className="icon is-small is-left">
-        <i class="fas fa-map-marked-alt"></i>
+        <i className="fas fa-map-marked-alt"></i>
       </span>
       {options.length > 0 && (
         <div id="place-options">

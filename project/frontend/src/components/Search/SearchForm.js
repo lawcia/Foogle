@@ -29,7 +29,7 @@ export const SearchForm = ({ features, loadFeatures }) => {
               placeholder="Sushi"
             />
             <span className="icon is-small is-left">
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </span>
           </div>
           <SearchLocationInput
