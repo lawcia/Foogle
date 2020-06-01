@@ -8,6 +8,7 @@ export function convertSearchLocationToCoordinates(searchLocation) {
     .get(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchLocation}.json?access_token=${token}`
     ).then(async (response) => {
+      console.log(response)
       if (response.status === 200) return response;
       throw new Error();
     }).catch(error => error)
