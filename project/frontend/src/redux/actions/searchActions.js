@@ -12,8 +12,9 @@ export function loadFeatures(searchLocation) {
   return function (dispatch) {
     return (
       mapBoxApi
-      .convertSearchLocationToCoordinates(searchLocation).then(response => {
-        dispatch(loadFeaturesSuccess(response.data.features))
+      .convertSearchLocationToCoordinates(searchLocation)
+      .then(features => {
+        dispatch(loadFeaturesSuccess(features))
       }).catch(error => console.log(error))
     )
   }
