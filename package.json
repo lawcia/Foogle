@@ -39,6 +39,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^3.4.2",
+    "dotenv-webpack": "^1.8.0",
     "geolib": "^3.2.1",
     "immer": "^6.0.9",
     "prop-types": "^15.7.2",

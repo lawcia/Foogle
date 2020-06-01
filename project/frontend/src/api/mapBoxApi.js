@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const token = process.env.REACT_APP_MAPBOX_TOKEN;
 
 export function convertSearchLocationToCoordinates(searchLocation) {
