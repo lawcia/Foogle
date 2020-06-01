@@ -1,6 +1,6 @@
 import * as searchActions from "./searchActions";
 import * as types from "./actionTypes";
-import { data } from "../../mockAPIs/mapbox.data";
+import { data } from "../../mockAPIs/mapbox";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 import axios from "axios";
@@ -14,10 +14,8 @@ describe("Search actions", () => {
   it("should create LOAD_FEATURES_SUCCESS when loading features", () => {
     
     axios.get.mockImplementation(() => Promise.resolve(data))
-
-    const expectedAction = [
-      { type: types.LOAD_FEATURES_SUCCESS, payload: data.features }
-    ];
+    
+    const expectedAction = [{ type: types.LOAD_FEATURES_SUCCESS, payload: data.features }];
 
     const store = mockStore({ features: [] });
     return store.dispatch(searchActions.loadFeatures("london")).then(() => {

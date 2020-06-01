@@ -1,5 +1,5 @@
 module.exports = {
-  data: [{
+  data:  {
     features: [{
         "place_name": "London, Greater London, England, United Kingdom",
         "center": [
@@ -29,5 +29,5 @@ module.exports = {
         ],
       }
     ]
-  }]
+  }
 }
