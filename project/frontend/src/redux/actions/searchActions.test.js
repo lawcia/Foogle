@@ -16,10 +16,16 @@ describe("Search action loadFeatures()", () => {
     
     const mockAxios = axios.get.mockImplementation(() => Promise.resolve(data))
     
-    const expectedAction = [{ type: types.LOAD_FEATURES_SUCCESS, payload: data.features }];
+    const searchLocation = "london";
+    const expectedAction = [{ 
+      type: types.LOAD_FEATURES_SUCCESS, features: data.features 
+    },
+    {
+      type: types.API_CALL_FEATURES_START, searchLocation
+    }];
 
     const store = mockStore({ features: [] });
-    return store.dispatch(searchActions.loadFeatures("london")).then(() => {
+    return store.dispatch(searchActions.loadFeatures(searchLocation)).then(() => {
       expect(mockAxios).toHaveBeenCalled();
       expect(store.getActions()).toEqual(expectedAction);
     });
