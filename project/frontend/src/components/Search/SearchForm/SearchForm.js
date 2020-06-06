@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SearchLocationInput from "../SearchLocationInput/SearchLocationInput";
+import SearchKeywordInput from "../SearchKeywordInput/SearchKeywordInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadFeatures } from "../../../redux/actions/searchActions";
@@ -26,17 +27,10 @@ export const SearchForm = ({ features, loadFeatures }) => {
     <form className="form">
       <div className="form__container">
         <div className="form__inputs-container">
-          <div className="control has-icons-left stretch">
-            <input
-              className="input"
-              type="text"
-              name="searchKeyword"
-              placeholder="Sushi"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-search"></i>
-            </span>
-          </div>
+          <SearchKeywordInput 
+            searchKeyword={searchKeyword}
+            handleChange={handleChange}
+          />
           <SearchLocationInput
             options={features}
             searchLocation={searchLocation}
