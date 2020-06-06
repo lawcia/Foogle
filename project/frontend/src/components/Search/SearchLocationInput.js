@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./SearchLocationInput.css";
 
 const SearchLocationInput = ({
   options,
@@ -8,7 +9,7 @@ const SearchLocationInput = ({
   handleChange,
 }) => {
   return (
-    <div className="control has-icons-left stretch">
+    <div className="control has-icons-left location-input">
       <input
         className="input"
         type="text"

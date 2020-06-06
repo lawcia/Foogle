@@ -16,5 +16,4 @@ describe("<Search Form />", () => {
     wrapper.find(".place-option").at(1).simulate("click");
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("London, Ontario, Canada");
   })
-
 })

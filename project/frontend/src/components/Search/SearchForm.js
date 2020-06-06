@@ -3,10 +3,11 @@ import SearchLocationInput from "./SearchLocationInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadFeatures } from "../../redux/actions/searchActions";
+import "./SearchForm.css";
 
 export const SearchForm = ({ features, loadFeatures }) => {
   const [searchLocation, setSearchLocation] = useState("");
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "searchLocation") {
@@ -19,8 +20,8 @@ export const SearchForm = ({ features, loadFeatures }) => {
 
   return (
     <form className="form">
-      <div className="flex-row">
-        <div className="input-div">
+      <div className="form__container">
+        <div className="form__inputs-container">
           <div className="control has-icons-left stretch">
             <input
               className="input"

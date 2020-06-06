@@ -1,0 +1,10 @@
+.location-input {
+  width: 100%;
+  padding-left: 4px;
+}
+
+@media only screen and (max-width: 640px) {
+  .location-input {
+      margin: 4px 8px;
+  }
+}

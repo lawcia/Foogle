@@ -15,33 +15,7 @@ body {
     margin: 16px 0px;
 }
 
-.form {
-    width: 100%;
-    max-width: 900px;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-
-
-.input-div {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-}
-
-.stretch {
-    width: 100%;
-    padding-left: 4px;
-}
 
 i.fas.fa-map-marker-alt {
     padding-right: 4px;
@@ -122,10 +96,6 @@ i.fas.fa-map-marker-alt {
 }
 
 @media only screen and (max-width: 640px) {
-    .stretch {
-        margin: 4px 8px;
-    }
-
     .input-div {
         flex-wrap: wrap;
         align-content: center
