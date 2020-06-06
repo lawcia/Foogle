@@ -5,7 +5,7 @@ export default function searchReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOAD_FEATURES_SUCCESS:
       return {
-        ...state, features: action.payload
+        ...state, features: action.features
       }
     default:
       return state;

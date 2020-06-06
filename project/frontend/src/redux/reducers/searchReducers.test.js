@@ -10,7 +10,10 @@ describe("search reducer", () => {
   })
 
   it("should return state with features data", () => {
-    expect(searchReducer(undefined, types.LOAD_FEATURES_SUCCESS))
+    expect(searchReducer(undefined, 
+      { type: types.LOAD_FEATURES_SUCCESS, 
+        features: data.features }
+        ))
     .toEqual({...initialState, features: data.features})
   })
 })
