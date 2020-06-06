@@ -9,4 +9,4 @@ node_modules
 .env
 __pycache__
 project/frontend/static/frontend
-coverage
+
