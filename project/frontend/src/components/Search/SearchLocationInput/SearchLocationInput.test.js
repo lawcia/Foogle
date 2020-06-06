@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import SearchLocationInput from "./SearchLocationInput";
-import { data } from "../../mockAPIs/mapbox";
+import { data } from "../../../mockAPIs/mapbox";
 
 describe("<Search Location Input />", () => {
 

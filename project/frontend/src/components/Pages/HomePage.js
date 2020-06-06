@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import SearchForm from "../Search/SearchForm";
+import SearchForm from "../Search/SearchForm/SearchForm";
 
 
 class HomePage extends React.Component {

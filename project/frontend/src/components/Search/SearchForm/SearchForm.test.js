@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { SearchForm } from "./SearchForm";
-import { data } from "../../mockAPIs/mapbox";
+import { data } from "../../../api/mapBoxApi";
 
 describe("<Search Form />", () => {
 

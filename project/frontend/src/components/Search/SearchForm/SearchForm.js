@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SearchLocationInput from "./SearchLocationInput";
+import SearchLocationInput from "../SearchLocationInput/SearchLocationInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loadFeatures } from "../../redux/actions/searchActions";
+import { loadFeatures } from "../../../redux/actions/searchActions";
 import "./SearchForm.css";
 
 export const SearchForm = ({ features, loadFeatures }) => {
@@ -17,6 +17,10 @@ export const SearchForm = ({ features, loadFeatures }) => {
         .catch((error) => console.log(error));
     }
   };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <form className="form">
