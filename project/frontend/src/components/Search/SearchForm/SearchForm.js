@@ -8,6 +8,7 @@ import "./SearchForm.css";
 
 export const SearchForm = ({ features, loadFeatures }) => {
   const [searchLocation, setSearchLocation] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -16,6 +17,8 @@ export const SearchForm = ({ features, loadFeatures }) => {
       loadFeatures(searchLocation)
         .then(() => {})
         .catch((error) => console.log(error));
+    }  else if (name === "searchKeyword") {
+      setSearchKeyword(value);
     }
   };
 

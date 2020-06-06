@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { SearchForm } from "./SearchForm";
-import { data } from "../../../api/mapBoxApi";
+import { data } from "../../../mockAPIs/mapbox";
 
 describe("<Search Form />", () => {
 
@@ -16,4 +16,6 @@ describe("<Search Form />", () => {
     wrapper.find(".place-option").at(1).simulate("click");
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("London, Ontario, Canada");
   })
+
+  
 })
