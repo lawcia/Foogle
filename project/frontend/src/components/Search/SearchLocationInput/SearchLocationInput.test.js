@@ -42,4 +42,6 @@ describe("<Search Location Input />", () => {
     expect(handleChange).toHaveBeenCalledWith(event);
   })
 
+  
+
 })

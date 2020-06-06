@@ -17,12 +17,14 @@ const SearchLocationInput = ({
         placeholder="79 Borough Road"
         value={searchLocation}
         onChange={(event) => handleChange(event)}
+        onClick={() => alert("hey")}
       />
       <span className="icon is-small is-left">
         <i className="fas fa-map-marked-alt"></i>
       </span>
       {options.length > 0 && (
         <div id="place-options">
+
           {options.map(({ place_name: placeName }) => (
             <p
               key={placeName}

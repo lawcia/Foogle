@@ -17,5 +17,11 @@ describe("<Search Form />", () => {
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("London, Ontario, Canada");
   })
 
+  it("should display option to use current location", () => {
+    const wrapper = mount(<SearchForm features={data.features} />);
+    wrapper.find("input[name='searchLocation']").simulate("click");
+    expect(wrapper.find(".current-location").text()).toEqual("Use current location");
+  })
+
   
 })
