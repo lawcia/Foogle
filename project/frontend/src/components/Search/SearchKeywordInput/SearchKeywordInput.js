@@ -7,7 +7,7 @@ const SearchKeywordInput = ({
   handleChange,
 }) => {
   return (
-    <div className="control has-icons-left stretch">
+    <div className="control has-icons-left keyword-input">
       <input
         className="input"
         type="text"
