@@ -3,22 +3,22 @@ import * as types from "./actionTypes";
 import { data } from "../../mockAPIs/mapbox";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import mock
-
+import axios from "axios";
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
-jest.mock("axios");
+jest.mock('axios');
 
 describe("Search action loadFeatures()", () => {
 
    afterEach(() => {
-     jest.mock.restore();
-   })
+    jest.clearAllMocks();
+    axios.get.mockClear();
+   });
 
   it("should create LOAD_FEATURES_SUCCESS when loading features", () => {
     
-    axios.get.mockResolvedValue({data});
+    axios.get.mockResolvedValueOnce({status: 200, data})
     
     const searchLocation = "london";
     const expectedAction = [{
