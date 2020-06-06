@@ -7,6 +7,8 @@ const SearchLocationInput = ({
   setSearchLocation,
   searchLocation,
   handleChange,
+  setShowDropdown,
+  showDropdown
 }) => {
   return (
     <div className="control has-icons-left location-input">
@@ -17,14 +19,19 @@ const SearchLocationInput = ({
         placeholder="79 Borough Road"
         value={searchLocation}
         onChange={(event) => handleChange(event)}
-        onClick={() => alert("hey")}
+        onClick={() => setShowDropdown(true)}
       />
       <span className="icon is-small is-left">
         <i className="fas fa-map-marked-alt"></i>
       </span>
-      {options.length > 0 && (
+      {(options.length > 0 || showDropdown) && (
         <div id="place-options">
-
+           <p
+           className="current-location"
+           tabIndex="0"
+           role="button"
+           aria-pressed="false"
+           ><i className="fas fa-map-marker-alt"></i>Use current location</p>
           {options.map(({ place_name: placeName }) => (
             <p
               key={placeName}
@@ -48,6 +55,8 @@ SearchLocationInput.protoTypes = {
   setSearchLocation: PropTypes.func.isRequired,
   searchLocation: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  setShowDropdown: PropTypes.func.isRequired,
+  showDropdown: PropTypes.bool.isRequired,
 };
 
 export default SearchLocationInput;

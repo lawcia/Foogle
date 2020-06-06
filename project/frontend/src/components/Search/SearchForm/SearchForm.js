@@ -9,6 +9,7 @@ import "./SearchForm.css";
 export const SearchForm = ({ features, loadFeatures }) => {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,13 +40,12 @@ export const SearchForm = ({ features, loadFeatures }) => {
             searchLocation={searchLocation}
             setSearchLocation={setSearchLocation}
             handleChange={handleChange}
+            setShowDropdown={setShowDropdown}
+            showDropdown={showDropdown}
           />
         </div>
         <button className="button is-primary margin" name="search">
           Search
-        </button>
-        <button className="button is-info margin" name="nearMe">
-          <i className="fas fa-map-marker-alt"></i>Near me
         </button>
       </div>
     </form>
