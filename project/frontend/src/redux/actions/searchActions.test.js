@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 import { data } from "../../mockAPIs/mapbox";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import axios from "axios";
+import mock
 
 
 const middleware = [thunk];
@@ -12,10 +12,13 @@ jest.mock("axios");
 
 describe("Search action loadFeatures()", () => {
 
+   afterEach(() => {
+     jest.mock.restore();
+   })
+
   it("should create LOAD_FEATURES_SUCCESS when loading features", () => {
     
-    const mockAxios = axios.get.mockResolvedValue({data});
-    console.log(data)
+    axios.get.mockResolvedValue({data});
     
     const searchLocation = "london";
     const expectedAction = [{
@@ -26,7 +29,7 @@ describe("Search action loadFeatures()", () => {
 
     const store = mockStore({ features: [] });
     return store.dispatch(searchActions.loadFeatures(searchLocation)).then(() => {
-      expect(mockAxios).toHaveBeenCalled();
+      expect(axios.get).toHaveBeenCalled();
       expect(store.getActions()).toEqual(expectedAction);
     });
     
