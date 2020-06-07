@@ -1,6 +1,7 @@
 .location-input {
   width: 100%;
   padding-left: 4px;
+  position: relative;
 }
 
 .location-input__dropdown {
@@ -42,6 +43,15 @@
   color: #3273dc;
 }
 
+.location-input__caret {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+}
+
+.location-input__caret:hover {
+  cursor: pointer;
+}
 
 
 @media only screen and (max-width: 640px) {

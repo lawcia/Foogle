@@ -8,7 +8,7 @@ const SearchLocationInput = ({
   searchLocation,
   handleChange,
   setShowDropdown,
-  showDropdown
+  showDropdown,
 }) => {
   return (
     <div className="control has-icons-left location-input">
@@ -24,14 +24,29 @@ const SearchLocationInput = ({
       <span className="icon is-small is-left">
         <i className="fas fa-map-marked-alt"></i>
       </span>
-      {(options.length > 0 || showDropdown) && (
+      {!showDropdown && (
+        <i
+          className="fas fa-caret-down location-input__caret"
+          onClick={() => setShowDropdown(true)}
+        ></i>
+      )}
+      {showDropdown && (
+        <i
+          className="fas fa-caret-up location-input__caret"
+          onClick={() => setShowDropdown(false)}
+        ></i>
+      )}
+      {showDropdown && (
         <div id="place-options" className="location-input__dropdown">
-           <p
-           className="current-location"
-           tabIndex="0"
-           role="button"
-           aria-pressed="false"
-           ><i className="fas fa-map-marker-alt location-input__icon"></i>Use current location</p>
+          <p
+            className="current-location"
+            tabIndex="0"
+            role="button"
+            aria-pressed="false"
+          >
+            <i className="fas fa-map-marker-alt location-input__icon"></i>Use
+            current location
+          </p>
           {options.map(({ place_name: placeName }) => (
             <p
               key={placeName}
