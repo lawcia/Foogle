@@ -3,6 +3,47 @@
   padding-left: 4px;
 }
 
+.location-input__dropdown {
+  position: absolute;
+  margin-top: 8px;
+  padding: 4px;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  color: #363636;
+  box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  max-width: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+  
+}
+
+.current-location, .place-option {
+ padding: 8px 4px;
+}
+
+.current-location:hover, .place-option:hover {
+  border-color: #3273dc;
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  cursor: pointer;
+}
+
+.current-location:active, .place-option:active {
+  border-color: #3273dc;
+}
+
+
+.location-input__icon {
+  margin-right: 4px;
+  color: #3273dc;
+}
+
+.current-location {
+  color: #3273dc;
+}
+
+
+
 @media only screen and (max-width: 640px) {
   .location-input {
       margin: 4px 8px;

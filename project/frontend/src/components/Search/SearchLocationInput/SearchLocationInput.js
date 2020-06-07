@@ -25,13 +25,13 @@ const SearchLocationInput = ({
         <i className="fas fa-map-marked-alt"></i>
       </span>
       {(options.length > 0 || showDropdown) && (
-        <div id="place-options">
+        <div id="place-options" className="location-input__dropdown">
            <p
            className="current-location"
            tabIndex="0"
            role="button"
            aria-pressed="false"
-           ><i className="fas fa-map-marker-alt"></i>Use current location</p>
+           ><i className="fas fa-map-marker-alt location-input__icon"></i>Use current location</p>
           {options.map(({ place_name: placeName }) => (
             <p
               key={placeName}
