@@ -44,7 +44,7 @@ export const SearchForm = ({ features, loadFeatures }) => {
             showDropdown={showDropdown}
           />
         </div>
-        <button className="button is-primary margin" name="search">
+        <button className="button is-primary form__button" name="search">
           Search
         </button>
       </div>

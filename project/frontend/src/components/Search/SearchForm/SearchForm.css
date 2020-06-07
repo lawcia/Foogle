@@ -1,7 +1,6 @@
 .form {
   width: 100%;
   max-width: 900px;
-  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,4 +16,30 @@
   width: 100%;
   max-width: 600px;
   display: flex;
+}
+
+.form__button {
+  margin-left: 4px;
+}
+
+@media only screen and (max-width: 640px) {
+  .form {
+    justify-content: center;
+  }
+
+  .form__inputs-container {
+    flex-wrap: wrap;
+    align-content: center
+  }
+
+  .form__container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center
+  }
+
+  .form__button {
+    width: 180px;
+    margin: 8px;
+  }
 }

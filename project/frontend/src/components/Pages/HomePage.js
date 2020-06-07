@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import SearchForm from "../Search/SearchForm/SearchForm";
-
+import "./HomePage.css";
 
 class HomePage extends React.Component {
   state = {
@@ -33,9 +33,11 @@ class HomePage extends React.Component {
     };
 
     return (
-      <div className="container flex-center">
-        <label className="label home-label">Find somewhere to eat.</label>
+      <div className="container home">
+        <div className="home-search__container">
+        <h1 className="home__label">Find somewhere to eat.</h1>
         <SearchForm />
+        </div>
         <div style={backgroundImage}></div>
       </div>
     );
