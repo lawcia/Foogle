@@ -4,7 +4,7 @@ import "./SearchLocationInput.css";
 
 const SearchLocationInput = ({
   options,
-  setSearchLocation,
+  handleClick,
   searchLocation,
   handleChange,
   setShowDropdown,
@@ -43,6 +43,7 @@ const SearchLocationInput = ({
             tabIndex="0"
             role="button"
             aria-pressed="false"
+            onClick={handleClick}
           >
             <i className="fas fa-map-marker-alt location-input__icon"></i>Use
             current location
@@ -54,7 +55,7 @@ const SearchLocationInput = ({
               tabIndex="0"
               role="button"
               aria-pressed="false"
-              onClick={() => setSearchLocation(placeName)}
+              onClick={(event) => handleClick(event, placeName)}
             >
               {placeName}
             </p>
@@ -67,7 +68,7 @@ const SearchLocationInput = ({
 
 SearchLocationInput.protoTypes = {
   options: PropTypes.array.isRequired,
-  setSearchLocation: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   searchLocation: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   setShowDropdown: PropTypes.func.isRequired,

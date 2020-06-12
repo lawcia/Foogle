@@ -20,8 +20,15 @@ export const SearchForm = ({ features, loadFeatures }) => {
         .catch((error) => console.log(error));
     }  else if (name === "searchKeyword") {
       setSearchKeyword(value);
-    }
+    } 
   };
+
+  const handleClick = (event, placeName = "__NEAR_ME__") => {
+    if(placeName === "__NEAR_ME__"){
+    } else {
+    setSearchLocation(placeName);
+    }
+  }
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -38,7 +45,7 @@ export const SearchForm = ({ features, loadFeatures }) => {
           <SearchLocationInput
             options={features}
             searchLocation={searchLocation}
-            setSearchLocation={setSearchLocation}
+            handleClick={handleClick}
             handleChange={handleChange}
             setShowDropdown={setShowDropdown}
             showDropdown={showDropdown}
