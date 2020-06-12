@@ -24,12 +24,7 @@ class HomePage extends React.Component {
 
   render() {
     const backgroundImage = {
-      backgroundImage: `url(${this.state.randomImage})`,
-      backgroundColor: "grey",
-      width: "100vw",
-      height: "50vh",
-      backgroundPosition: "center center",
-      backgroundSize: "cover",
+      backgroundImage: `url(${this.state.randomImage})`
     };
 
     return (
@@ -38,7 +33,7 @@ class HomePage extends React.Component {
         <h1 className="home__label">Find somewhere to eat.</h1>
         <SearchForm />
         </div>
-        <div style={backgroundImage}></div>
+        <div className="home__image" style={backgroundImage}></div>
       </div>
     );
   }
