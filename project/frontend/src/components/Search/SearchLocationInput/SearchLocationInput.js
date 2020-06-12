@@ -48,14 +48,20 @@ const SearchLocationInput = ({
             <i className="fas fa-map-marker-alt location-input__icon"></i>Use
             current location
           </p>
-          {options.map(({ place_name: placeName }) => (
+          {options.map(({ place_name: placeName, center }) => (
             <p
               key={placeName}
               className="place-option"
               tabIndex="0"
               role="button"
               aria-pressed="false"
-              onClick={(event) => handleClick(event, placeName)}
+              onClick={(event) =>
+                handleClick(event, {
+                  placeName,
+                  longitude: center[0],
+                  latitude: center[1],
+                })
+              }
             >
               {placeName}
             </p>
