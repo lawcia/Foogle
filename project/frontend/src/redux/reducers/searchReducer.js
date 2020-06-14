@@ -7,7 +7,11 @@ export default function searchReducer(state = initialState, action) {
       return {
         ...state, features: action.features
       }
-    default:
-      return state;
+      case types.GET_CURRENT_POSITION_SUCCESS:
+        return {
+          ...state, longitude: action.coords.longitude, latitude: action.coords.latitude
+        }
+        default:
+          return state;
   }
 }
