@@ -53,35 +53,7 @@ class App extends React.Component {
   };
 
   // near me
-  geoOptions = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maxiumAge: 0,
-  };
 
-  getGeoPositionSuccess = (position) => {
-    const crd = position.coords;
-    this.setState({
-      latitude: crd.latitude,
-      longitude: crd.longitude,
-      submitted: true,
-    });
-  };
-
-  getGeoPositionError = (error) => {
-    this.setState({ error: [error.code, error.message] });
-  };
-
-  getGeoPosition = (event) => {
-    navigator.geolocation.getCurrentPosition(
-      this.getGeoPositionSuccess,
-      this.getGeoPositionError,
-      this.geoOptions
-    );
-
-    event.preventDefault();
-    //console.log('getGeoPosition was pressed!')
-  };
 
   //set username
   setUsername = (username) => {

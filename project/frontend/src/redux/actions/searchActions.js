@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as mapBoxApi from "../../api/mapBoxApi";
+import * as navigatorApi from "../../api/navigatorApi";
 
 export function loadFeaturesSuccess(features) {
   return {
@@ -21,6 +22,25 @@ export function apiCallError() {
   }
 }
 
+export function getCurrentPositionRequest(){
+  return {
+    type: types.GET_CURRENT_POSITION_REQUEST
+  }
+}
+
+export function getCurrentPositionSuccess(coords){
+  return {
+    type: types.GET_CURRENT_POSITION_SUCCESS,
+    coords
+  }
+}
+
+export function getCurrentPositionError(){
+  return {
+    type: types.GET_CURRENT_POSITION_ERROR
+  }
+}
+
 export function loadFeatures(searchLocation) {
   return function (dispatch) {
     dispatch(apiCallFeaturesStart(searchLocation))
@@ -31,6 +51,20 @@ export function loadFeatures(searchLocation) {
         dispatch(loadFeaturesSuccess(features))
       }).catch(() => {
         dispatch(apiCallError())
+      })
+    )
+  }
+}
+
+export function getCurrentPosition() {
+  return function (dispatch) {
+    dispatch(getCurrentPositionRequest())
+    return (
+      navigatorApi.getGeoPosition()
+      .then((coords) => {
+        dispatch(getCurrentPositionSuccess(coords))
+      }).catch(() => {
+        dispatch(getCurrentPositionError())
       })
     )
   }
