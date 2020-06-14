@@ -46,3 +46,39 @@ describe("Search action loadFeatures()", () => {
     expect(action).toEqual(expectedAction);
   })
 });
+
+
+describe("search actions getCurrentPosition ", () => {
+  it("should create GET_CURRENT_POSITION_REQUEST when requesting geolocation", () => {
+
+    const expectedAction = [{
+      type: types.GET_CURRENT_POSITION_REQUEST
+    },{
+      type: types.GET_CURRENT_POSITION_SUCCESS,
+      coords: {
+        longitude: 90,
+        latitude: 70
+      }
+    }];
+     
+    const store = mockStore({});
+    return store.dispatch(searchActions.getCurrentPosition()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it("should create GET_CURRENT_POSITION_ERROR when geolocation request is denied", () => {
+
+    const expectedAction = [{
+      type: types.CURRENT_POSITION_REQUEST
+    },{
+      type: types.CURRENT_POSITION_ERROR
+    }];
+     
+    const store = mockStore({});
+    return store.dispatch(searchActions.getCurrentPosition()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+});
