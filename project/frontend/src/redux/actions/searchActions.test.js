@@ -49,7 +49,23 @@ describe("Search action loadFeatures()", () => {
 
 
 describe("search actions getCurrentPosition ", () => {
-  it("should create GET_CURRENT_POSITION_REQUEST when requesting geolocation", () => {
+
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  
+it("should create GET_CURRENT_POSITION_REQUEST when requesting geolocation", () => {
+    
+    global.navigator.geolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((success) => Promise.resolve(success({
+        coords: {
+          latitude: 70,
+          longitude: 90
+        }
+      })))
+    };
+
 
     const expectedAction = [{
       type: types.GET_CURRENT_POSITION_REQUEST
@@ -69,10 +85,15 @@ describe("search actions getCurrentPosition ", () => {
 
   it("should create GET_CURRENT_POSITION_ERROR when geolocation request is denied", () => {
 
+    global.navigator.geolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((error) => Promise.reject(error({})))
+    };
+
+
     const expectedAction = [{
-      type: types.CURRENT_POSITION_REQUEST
+      type: types.GET_CURRENT_POSITION_REQUEST
     },{
-      type: types.CURRENT_POSITION_ERROR
+      type: types.GET_CURRENT_POSITION_ERROR
     }];
      
     const store = mockStore({});
