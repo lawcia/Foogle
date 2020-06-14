@@ -1,0 +1,8 @@
+.button.is-primary.blue {
+  background-color: #32446e;
+  font-weight: bold;
+}
+
+.button.is-primary.blue:hover {
+  background-color: #2b3b60;
+}

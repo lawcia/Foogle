@@ -4,6 +4,7 @@ import SearchKeywordInput from "../SearchKeywordInput/SearchKeywordInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadFeatures } from "../../../redux/actions/searchActions";
+import Button from "../../Buttons/Button";
 import "./SearchForm.css";
 
 export const SearchForm = ({ features, loadFeatures }) => {
@@ -60,9 +61,7 @@ export const SearchForm = ({ features, loadFeatures }) => {
             showDropdown={showDropdown}
           />
         </div>
-        <button className="button is-primary form__button" name="search">
-          Search
-        </button>
+        <Button value="Search" colour="blue" />
       </div>
     </form>
   );
