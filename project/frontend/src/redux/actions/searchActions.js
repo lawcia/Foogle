@@ -41,6 +41,13 @@ export function getCurrentPositionError(){
   }
 }
 
+export function getCurrentLocationNameSuccess(location){
+  return {
+    type: types.GET_CURRENT_LOCATION_NAME_SUCCESS,
+    location
+  }
+}
+
 export function loadFeatures(searchLocation) {
   return function (dispatch) {
     dispatch(apiCallFeaturesStart(searchLocation))
@@ -63,6 +70,9 @@ export function getCurrentPosition() {
       navigatorApi.getGeoPosition()
       .then((coords) => {
         dispatch(getCurrentPositionSuccess(coords))
+        return mapBoxApi.convertCoordinatesToSearchLocation(coords.longitude, coords.latitude)
+      }).then((location) => {
+        dispatch(getCurrentLocationNameSuccess(location))
       }).catch(() => {
         dispatch(getCurrentPositionError())
       })
