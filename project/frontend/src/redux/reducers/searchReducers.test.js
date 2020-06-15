@@ -64,4 +64,17 @@ describe("search reducer", () => {
       latitude: coords.latitude
     })
   })
+
+  it("should return state with updated search keyword", () => {
+    const keyword = "salad"
+
+    expect(searchReducer(undefined, {
+      type: types.UPDATE_SEARCH_KEYWORD,
+      keyword
+    })).toEqual({
+      ...initialState,
+      keyword
+    })
+  })
+
 })
