@@ -29,5 +29,5 @@ describe("<Search Form />", () => {
     expect(wrapper.find(".current-location").text()).toEqual("Use current location");
   })
 
-  
+
 })

@@ -121,3 +121,22 @@ describe("search actions getCurrentPosition ", () => {
   });
 
 });
+
+describe("search actions updateCoordinates", () => {
+
+  it("should create UPDATE_COORDINATES action", () => {
+    const coords = {
+      longitude: 90,
+      latitude: 90
+    };
+
+    const expectedAction = {
+      type: types.UPDATE_COORDINATES,
+      coords
+    };
+
+    const action = searchActions.updateCoordinates();
+
+    expect(action).toEqual(expectedAction);
+  })
+})
