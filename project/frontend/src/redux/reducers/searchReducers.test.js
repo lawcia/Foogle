@@ -48,4 +48,20 @@ describe("search reducer", () => {
       matchedLocation: placeName
     })
   })
+
+  it("should return state with updated coordinates", () => {
+    const coords = {
+      longitude: 70,
+      latitude: 70
+    };
+
+    expect(searchReducer(undefined, {
+      type: types.UPDATE_COORDINATES,
+      coords
+    })).toEqual({
+      ...initialState,
+      longitude: coords.longitude, 
+      latitude: coords.latitude
+    })
+  })
 })
