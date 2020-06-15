@@ -1,5 +1,5 @@
 export default {
-  searchLocation: '',
+  matchedLocation: '',
   latitude: '',
   longitude: '',
   features: []

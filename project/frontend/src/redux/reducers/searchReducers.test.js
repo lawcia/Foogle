@@ -45,7 +45,7 @@ describe("search reducer", () => {
       location: placeName
     })).toEqual({
       ...initialState,
-      searchLocation: placeName
+      matchedLocation: placeName
     })
   })
 })

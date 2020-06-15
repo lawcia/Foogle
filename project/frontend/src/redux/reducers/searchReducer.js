@@ -13,7 +13,7 @@ export default function searchReducer(state = initialState, action) {
         }
         case types.GET_CURRENT_LOCATION_NAME_SUCCESS:
           return {
-            ...state, searchLocation: action.location
+            ...state, matchedLocation: action.location
           }
           default:
             return state;
