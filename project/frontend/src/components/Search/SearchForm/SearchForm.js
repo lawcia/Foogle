@@ -25,11 +25,11 @@ export const SearchForm = ({
   const [searchKeyword, setSearchKeyword] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
 
+  let history = useHistory();
+
   useEffect(() => {
     setSearchLocation(matchedLocation);
   }, [matchedLocation]);
-
-  let history = useHistory();
 
   const handleChange = (event) => {
     const { name, value } = event.target;

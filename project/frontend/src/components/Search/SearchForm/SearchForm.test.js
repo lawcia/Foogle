@@ -3,6 +3,12 @@ import { shallow, mount } from "enzyme";
 import { SearchForm } from "./SearchForm";
 import { data } from "../../../mockAPIs/mapbox";
 
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: jest.fn(),
+  })
+}))
+
 describe("<Search Form />", () => {
 
   it("Should render search location input", () => {
@@ -15,7 +21,8 @@ describe("<Search Form />", () => {
                            features={data.features}
                            loadFeatures={jest.fn()}
                            getCurrentPosition={jest.fn()}
-                           matchedLocation=""/>);
+                           matchedLocation=""
+                           updateCoordinates={jest.fn()}/>);
     wrapper.find("input[name='searchLocation']").simulate("click");
     wrapper.update();
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
