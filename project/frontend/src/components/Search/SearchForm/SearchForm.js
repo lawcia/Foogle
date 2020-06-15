@@ -8,6 +8,7 @@ import {
   loadFeatures,
   getCurrentPosition,
   updateCoordinates,
+  updateSearchKeyword,
 } from "../../../redux/actions/searchActions";
 import Button from "../../Buttons/Button";
 import "./SearchForm.css";
@@ -18,6 +19,7 @@ export const SearchForm = ({
   getCurrentPosition,
   matchedLocation,
   updateCoordinates,
+  updateSearchKeyword,
 }) => {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -36,6 +38,7 @@ export const SearchForm = ({
       loadFeatures(searchLocation).catch((error) => console.log(error));
     } else if (name === "searchKeyword") {
       setSearchKeyword(value);
+      updateSearchKeyword(value);
     }
   };
 
@@ -85,6 +88,7 @@ SearchForm.protoTypes = {
   getCurrentPosition: PropTypes.func.isRequired,
   matchedLocation: PropTypes.string,
   updateCoordinates: PropTypes.func.isRequired,
+  updateSearchKeyword: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -98,6 +102,7 @@ const mapDispatchToProps = {
   loadFeatures,
   getCurrentPosition,
   updateCoordinates,
+  updateSearchKeyword,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

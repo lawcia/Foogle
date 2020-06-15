@@ -55,6 +55,13 @@ export function updateCoordinatesRequest(coords) {
   }
 }
 
+export function updateSearchKeywordRequest(keyword){
+  return {
+    type: types.UPDATE_SEARCH_KEYWORD,
+    keyword
+  }
+}
+
 export function loadFeatures(searchLocation) {
   return function (dispatch) {
     dispatch(apiCallFeaturesStart(searchLocation))
@@ -90,5 +97,11 @@ export function getCurrentPosition() {
 export function updateCoordinates(coords) {
   return function (dispatch) {
     dispatch(updateCoordinatesRequest(coords))
+  }
+}
+
+export function updateSearchKeyword(keyword) {
+  return function (dispatch) {
+    dispatch(updateSearchKeywordRequest(keyword))
   }
 }

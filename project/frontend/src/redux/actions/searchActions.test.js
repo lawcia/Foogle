@@ -165,3 +165,41 @@ describe("search actions updateCoordinates", () => {
 
 
 });
+
+describe("search actions updateSearchKeyword", () => {
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+
+  it("should have UPDATE_SEARCH_KEYWORD action on dispatch of updateSearchKeyword", () => {
+
+    const keyword = "burgers"
+
+    const expectedAction = [{
+      type: types.UPDATE_SEARCH_KEYWORD,
+      keyword
+    }]
+
+    const store = mockStore({});
+
+    store.dispatch(searchActions.updateSearchKeyword(keyword));
+    expect(store.getActions()).toEqual(expectedAction);
+  
+  });
+
+  it("should create UPDATE_SEARCH_KEYWORD action", () => {
+    const keyword = "pasta"
+
+    const expectedAction = {
+      type: types.UPDATE_SEARCH_KEYWORD,
+      keyword
+    };
+
+    const action = searchActions.updateSearchKeywordRequest(keyword);
+    expect(action).toEqual(expectedAction);
+  });
+
+
+});
