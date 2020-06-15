@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchLocationInput from "../SearchLocationInput/SearchLocationInput";
 import SearchKeywordInput from "../SearchKeywordInput/SearchKeywordInput";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loadFeatures, getCurrentPosition } from "../../../redux/actions/searchActions";
+import {
+  loadFeatures,
+  getCurrentPosition,
+} from "../../../redux/actions/searchActions";
 import Button from "../../Buttons/Button";
 import "./SearchForm.css";
 
-export const SearchForm = ({ features, loadFeatures, getCurrentPosition, matchedLocation }) => {
+export const SearchForm = ({
+  features,
+  loadFeatures,
+  getCurrentPosition,
+  matchedLocation,
+}) => {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [coordinates, setCoordinates] = useState({
-    longitude: null,
-    latitude: null,
-  });
+
+  useEffect(() => {
+    setSearchLocation(matchedLocation);
+  }, [matchedLocation]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,16 +37,11 @@ export const SearchForm = ({ features, loadFeatures, getCurrentPosition, matched
   const handleClick = (event, location = "__NEAR_ME__") => {
     if (location === "__NEAR_ME__") {
       setSearchLocation("");
-      getCurrentPosition().then(() => {
-        setSearchLocation(matchedLocation)
-      }).catch((error) => console.log(error));
+      getCurrentPosition().catch((error) => console.log(error));
     } else {
       const { placeName, longitude, latitude } = location;
       setSearchLocation(placeName);
-      setCoordinates({
-        longitude,
-        latitude,
-      });
+      
     }
   };
 
@@ -73,13 +76,13 @@ SearchForm.protoTypes = {
   features: PropTypes.array.isRequired,
   loadFeatures: PropTypes.func.isRequired,
   getCurrentPosition: PropTypes.func.isRequired,
-  matchedLocation: PropTypes.string
+  matchedLocation: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
   return {
     features: state.features,
-    matchedLocation: state.matchedLocation
+    matchedLocation: state.matchedLocation,
   };
 };
 
