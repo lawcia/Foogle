@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import SearchLocationInput from "../SearchLocationInput/SearchLocationInput";
 import SearchKeywordInput from "../SearchKeywordInput/SearchKeywordInput";
 import PropTypes from "prop-types";
@@ -6,6 +7,7 @@ import { connect } from "react-redux";
 import {
   loadFeatures,
   getCurrentPosition,
+  updateCoordinates,
 } from "../../../redux/actions/searchActions";
 import Button from "../../Buttons/Button";
 import "./SearchForm.css";
@@ -15,6 +17,7 @@ export const SearchForm = ({
   loadFeatures,
   getCurrentPosition,
   matchedLocation,
+  updateCoordinates,
 }) => {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -23,6 +26,8 @@ export const SearchForm = ({
   useEffect(() => {
     setSearchLocation(matchedLocation);
   }, [matchedLocation]);
+
+  let history = useHistory();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,21 +41,23 @@ export const SearchForm = ({
 
   const handleClick = (event, location = "__NEAR_ME__") => {
     if (location === "__NEAR_ME__") {
-      setSearchLocation("");
-      getCurrentPosition().catch((error) => console.log(error));
+      matchedLocation.length === 0
+        ? getCurrentPosition().catch((error) => console.log(error))
+        : setSearchLocation(matchedLocation);
     } else {
       const { placeName, longitude, latitude } = location;
       setSearchLocation(placeName);
-      
+      updateCoordinates({ longitude, latitude });
     }
   };
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    history.push("/results");
   };
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <div className="form__container">
         <div className="form__inputs-container">
           <SearchKeywordInput
@@ -77,6 +84,7 @@ SearchForm.protoTypes = {
   loadFeatures: PropTypes.func.isRequired,
   getCurrentPosition: PropTypes.func.isRequired,
   matchedLocation: PropTypes.string,
+  updateCoordinates: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -89,6 +97,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loadFeatures,
   getCurrentPosition,
+  updateCoordinates,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
