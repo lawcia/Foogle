@@ -11,7 +11,11 @@ export default function searchReducer(state = initialState, action) {
         return {
           ...state, longitude: action.coords.longitude, latitude: action.coords.latitude
         }
-        default:
-          return state;
+        case types.GET_CURRENT_LOCATION_NAME_SUCCESS:
+          return {
+            ...state, searchLocation: action.location
+          }
+          default:
+            return state;
   }
 }
