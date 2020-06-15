@@ -7,7 +7,7 @@ import { loadFeatures, getCurrentPosition } from "../../../redux/actions/searchA
 import Button from "../../Buttons/Button";
 import "./SearchForm.css";
 
-export const SearchForm = ({ features, loadFeatures, getCurrentPosition }) => {
+export const SearchForm = ({ features, loadFeatures, getCurrentPosition, matchedLocation }) => {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -29,9 +29,8 @@ export const SearchForm = ({ features, loadFeatures, getCurrentPosition }) => {
   const handleClick = (event, location = "__NEAR_ME__") => {
     if (location === "__NEAR_ME__") {
       setSearchLocation("");
-      setCoordinates({longitude: null, latitude: null})
       getCurrentPosition().then(() => {
-        
+        setSearchLocation(matchedLocation)
       }).catch((error) => console.log(error));
     } else {
       const { placeName, longitude, latitude } = location;
@@ -74,11 +73,13 @@ SearchForm.protoTypes = {
   features: PropTypes.array.isRequired,
   loadFeatures: PropTypes.func.isRequired,
   getCurrentPosition: PropTypes.func.isRequired,
+  matchedLocation: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
   return {
     features: state.features,
+    matchedLocation: state.matchedLocation
   };
 };
 
