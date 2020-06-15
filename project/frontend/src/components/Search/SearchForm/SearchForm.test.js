@@ -11,7 +11,11 @@ describe("<Search Form />", () => {
   })
 
   it("The value of textinput should match auto complete option when clicked", () => {
-    const wrapper = mount(<SearchForm features={data.features} />);
+    const wrapper = mount(<SearchForm 
+                           features={data.features}
+                           loadFeatures={jest.fn()}
+                           getCurrentPosition={jest.fn()}
+                           matchedLocation=""/>);
     wrapper.find("input[name='searchLocation']").simulate("click");
     wrapper.update();
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
