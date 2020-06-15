@@ -16,7 +16,10 @@ export default function searchReducer(state = initialState, action) {
       return {
           ...state, matchedLocation: action.location
       }
-    
+    case types.UPDATE_SEARCH_KEYWORD:
+      return {
+        ...state, keyword: action.keyword
+      }
     default:
       return state;
   }
