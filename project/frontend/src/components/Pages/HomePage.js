@@ -1,42 +1,28 @@
-import React from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import * as api from "../../api/unsplashApi";
 import SearchForm from "../Search/SearchForm/SearchForm";
 import "./HomePage.css";
 
-class HomePage extends React.Component {
-  state = {
-    randomImage: null,
+const HomePage = () => {
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    api.getRandomImage().then((randomImage) => setImage(randomImage));
+  }, []);
+
+  const backgroundImage = {
+    backgroundImage: `url(${image})`,
   };
 
-  getRandomImage = () => {
-    axios
-      .get(
-        "https://source.unsplash.com/featured/1600x900/?food,restaurant,cafe"
-      )
-      .then((response) =>
-        this.setState({ randomImage: response.request.responseURL })
-      );
-  };
-
-  componentDidMount() {
-    this.getRandomImage();
-  }
-
-  render() {
-    const backgroundImage = {
-      backgroundImage: `url(${this.state.randomImage})`
-    };
-
-    return (
-      <div className="container home">
-        <div className="home-search__container">
+  return (
+    <div className="container home">
+      <div className="home-search__container">
         <h1 className="home__label">Find somewhere to eat.</h1>
         <SearchForm />
-        </div>
-        <div className="home__image" style={backgroundImage}></div>
       </div>
-    );
-  }
-}
+      <div className="home__image" style={backgroundImage}></div>
+    </div>
+  );
+};
 
 export default HomePage;
