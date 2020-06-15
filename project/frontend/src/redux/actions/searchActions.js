@@ -22,29 +22,36 @@ export function apiCallError() {
   }
 }
 
-export function getCurrentPositionRequest(){
+export function getCurrentPositionRequest() {
   return {
     type: types.GET_CURRENT_POSITION_REQUEST
   }
 }
 
-export function getCurrentPositionSuccess(coords){
+export function getCurrentPositionSuccess(coords) {
   return {
     type: types.GET_CURRENT_POSITION_SUCCESS,
     coords
   }
 }
 
-export function getCurrentPositionError(){
+export function getCurrentPositionError() {
   return {
     type: types.GET_CURRENT_POSITION_ERROR
   }
 }
 
-export function getCurrentLocationNameSuccess(location){
+export function getCurrentLocationNameSuccess(location) {
   return {
     type: types.GET_CURRENT_LOCATION_NAME_SUCCESS,
     location
+  }
+}
+
+export function updateCoordinatesRequest(coords) {
+  return {
+    type: types.UPDATE_COORDINATES,
+    coords
   }
 }
 
@@ -77,5 +84,11 @@ export function getCurrentPosition() {
         dispatch(getCurrentPositionError())
       })
     )
+  }
+}
+
+export function updateCoordinates(coords) {
+  return function (dispatch) {
+    dispatch(updateCoordinatesRequest(coords))
   }
 }

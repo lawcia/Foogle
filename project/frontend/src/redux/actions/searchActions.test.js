@@ -124,6 +124,30 @@ describe("search actions getCurrentPosition ", () => {
 
 describe("search actions updateCoordinates", () => {
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+
+  it("should have UPDATE_COORDINATES action on dispatch of updateCoordiantes", () => {
+
+    const coords = {
+      longitude: 90,
+      latitude: 90
+    };
+
+    const expectedAction = [{
+      type: types.UPDATE_COORDINATES,
+      coords
+    }]
+
+    const store = mockStore({longitude: "", latitude: ""});
+
+    store.dispatch(searchActions.updateCoordinates(coords));
+    expect(store.getActions()).toEqual(expectedAction);
+  
+  });
+
   it("should create UPDATE_COORDINATES action", () => {
     const coords = {
       longitude: 90,
@@ -135,8 +159,9 @@ describe("search actions updateCoordinates", () => {
       coords
     };
 
-    const action = searchActions.updateCoordinates();
-
+    const action = searchActions.updateCoordinatesRequest(coords);
     expect(action).toEqual(expectedAction);
-  })
-})
+  });
+
+
+});
