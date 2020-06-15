@@ -18,42 +18,10 @@ import {
 
 class App extends React.Component {
   state = {
-    searchKeyword: null,
-    searchLocation: null,
-    latitude: null,
-    longitude: null,
-    error: null,
-    submitted: false,
-    fetched: false,
     loggedIn: false,
     username: null,
     signedUp: false,
-    match: null,
   };
-
-  refreshState = () => {
-    this.setState({ submitted: false, fetched: false, error: null });
-  };
-
-  handleChangeKeyword = (event) => {
-    const { value, name } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleChangeLocation = (event) => {
-    const { value, name } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = (event) => {
-    if (this.state.fetched) {
-      this.setState({ submitted: true });
-    }
-    event.preventDefault();
-  };
-
-  // near me
-
 
   //set username
   setUsername = (username) => {
@@ -94,12 +62,7 @@ class App extends React.Component {
           <Navigation loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/results">
-              <Results
-                searchKeyword={this.state.searchKeyword}
-                longitude={this.state.longitude}
-                latitude={this.state.latitude}
-                refreshState={this.refreshState}
-              />
+              <Results />
             </Route>
             <Route exact path="/login">
               {this.state.loggedIn ? (
@@ -124,16 +87,7 @@ class App extends React.Component {
               <Favourites username={this.state.username} />
             </Route>
             <Route exact path="/">
-              {this.state.submitted ? (
-                <Redirect to="/results" />
-              ) : (
-                <HomePage
-                  match={this.state.match}
-                  handleChangeKeyword={this.handleChangeKeyword}
-                  getGeoPosition={this.getGeoPosition}
-                  handleSubmit={this.handleSubmit}
-                />
-              )}
+                <HomePage />
             </Route>
           </Switch>
         </div>
