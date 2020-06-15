@@ -36,4 +36,16 @@ describe("search reducer", () => {
       latitude: coords.latitude
     })
   })
+
+  it("should return state with location", () => {
+    const placeName = "London";
+
+    expect(searchReducer(undefined, {
+      type: types.GET_CURRENT_LOCATION_NAME_SUCCESS,
+      location: placeName
+    })).toEqual({
+      ...initialState,
+      searchLocation: placeName
+    })
+  })
 })
