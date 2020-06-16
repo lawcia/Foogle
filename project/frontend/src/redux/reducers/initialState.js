@@ -3,5 +3,7 @@ export default {
   latitude: '',
   longitude: '',
   features: [],
-  keyword: ''
+  keyword: '',
+  isAuthenticated: false,
+  username: ''
 }
