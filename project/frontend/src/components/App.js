@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 import HomePage from "./Pages/HomePage";
 import Results from "./Results";
 import Favourites from "./Favourites";
-import Login from "./Login";
+import Login from "./Login/Login";
 import Logout from "./Logout";
 import Signup from "./Signup";
 import axios from "axios";

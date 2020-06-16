@@ -87,9 +87,6 @@ i.fas.fa-map-marker-alt {
 }
 
 
-.align-text {
-    text-align: center;
-}
 
 .padding-top {
     padding-top: 16px;
@@ -108,29 +105,3 @@ i.fas.fa-map-marker-alt {
     flex-wrap: wrap;
 }
 
-.error-msg {
-    color: red;
-}
-
-.form-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20vh;
-    height: 100vh;
-    width: 100%;
-}
-
-.user-form {
-    width: 100%;
-    max-width: 600px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-.input-m {
-    margin: 8px 0px;
-}
