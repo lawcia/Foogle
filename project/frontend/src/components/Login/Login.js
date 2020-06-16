@@ -4,7 +4,7 @@ import logo from "../../images/foogle.png";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({error=""}) => {
+const Login = ({error}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

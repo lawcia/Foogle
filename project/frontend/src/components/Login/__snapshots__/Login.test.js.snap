@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should match default snapshot 1`] = `
+<div
+  className="Login"
+>
+  <img
+    alt="foogle logo"
+    className="Login__logo"
+    src="test-file-stub"
+  />
+  <h3
+    className="Login__heading"
+  >
+    Welcome back
+  </h3>
+  <form
+    className="Login__form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="Login__label"
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <input
+      className="input input-m Login__input"
+      name="username"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <label
+      className="Login__label"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      className="input input-m Login__input"
+      name="password"
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+    <button
+      className="button is-primary blue"
+    >
+      Log in
+    </button>
+  </form>
+  <div>
+    <p>
+      New to foogle? 
+      <a
+        href="/signup"
+        onClick={[Function]}
+      >
+        Create an account
+      </a>
+    </p>
+  </div>
+</div>
+`;
+
+exports[`<Login /> should match error snapshot 1`] = `
+<div
+  className="Login"
+>
+  <img
+    alt="foogle logo"
+    className="Login__logo"
+    src="test-file-stub"
+  />
+  <h3
+    className="Login__heading"
+  >
+    Welcome back
+  </h3>
+  <div
+    className="Login--error"
+  >
+    <p>
+      Something went wrong
+    </p>
+  </div>
+  <form
+    className="Login__form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="Login__label"
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <input
+      className="input input-m Login__input"
+      name="username"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <label
+      className="Login__label"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      className="input input-m Login__input"
+      name="password"
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+    <button
+      className="button is-primary blue"
+    >
+      Log in
+    </button>
+  </form>
+  <div>
+    <p>
+      New to foogle? 
+      <a
+        href="/signup"
+        onClick={[Function]}
+      >
+        Create an account
+      </a>
+    </p>
+  </div>
+</div>
+`;
