@@ -7,6 +7,7 @@ import Login from "./Login/Login";
 import Logout from "./Logout";
 import Signup from "./Signup";
 import axios from "axios";
+import "./App.css";
 
 import {
   BrowserRouter as Router,
@@ -58,7 +59,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <Navigation loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/results">
