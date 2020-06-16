@@ -1,0 +1,43 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login__form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.Login__input {
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.Login__logo {
+  width: 200px;
+}
+
+.Login__heading {
+  font-size: 30px;
+  text-align: center;
+}
+
+.Login__label {
+  font-weight: 600;
+}
+
+.Login--error {
+  background-color: #ffcdd2;
+  color: #630700;
+  padding: 4px;
+  width: 268px;
+  text-align: center;
+  margin-top: 16px;
+  border-radius: 4px;
+  border: 1px solid #630700;
+}
