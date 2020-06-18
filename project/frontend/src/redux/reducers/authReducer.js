@@ -7,6 +7,10 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state, username: action.username, isAuthenticated: true
       }
+    case types.LOGIN_ERROR:
+      return {
+        ...state, loginError: action.error, isAuthenticated: false
+      }
     default:
       return state;
   }
