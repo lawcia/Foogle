@@ -5,5 +5,6 @@ export default {
   features: [],
   keyword: '',
   isAuthenticated: false,
-  username: ''
+  username: '',
+  loginError: []
 }

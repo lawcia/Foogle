@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import { Login } from "./Login";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import { BrowserRouter as Router } from "react-router-dom";

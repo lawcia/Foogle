@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 import { loginUser } from "../../redux/actions/authActions";
 import "./Login.css";
 
-const error = "";
-
 export const Login = ({error, loginUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
