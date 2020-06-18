@@ -23,7 +23,7 @@ const SearchKeywordInput = ({
   );
 };
 
-SearchKeywordInput.protoTypes = {
+SearchKeywordInput.propTypes = {
   searchKeyword: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };

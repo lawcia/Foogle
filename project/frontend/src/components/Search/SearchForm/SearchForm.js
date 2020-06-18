@@ -82,7 +82,7 @@ export const SearchForm = ({
   );
 };
 
-SearchForm.protoTypes = {
+SearchForm.propTypes = {
   features: PropTypes.array.isRequired,
   loadFeatures: PropTypes.func.isRequired,
   getCurrentPosition: PropTypes.func.isRequired,
@@ -93,8 +93,8 @@ SearchForm.protoTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    features: state.features,
-    matchedLocation: state.matchedLocation,
+    features: state.searchReducer.features,
+    matchedLocation: state.searchReducer.Location,
   };
 };
 

@@ -50,7 +50,13 @@ describe("<Search Location Input />", () => {
   })
 
   it("should not render place-options div if features is empty", () => {
-    let searchWrapper = shallow(<SearchLocationInput options={[]} />);
+    let searchWrapper = shallow(<SearchLocationInput 
+                                 options={[]}
+                                 searchLocation=""
+                                 setSearchLocation={jest.fn()}
+                                 handleChange={handleChange}
+                                 setShowDropdown={setShowDropdown}
+                                 showDropdown={false} />);
     expect(searchWrapper.find("#place-options").length).toEqual(0);
   })
   

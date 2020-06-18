@@ -72,7 +72,7 @@ const SearchLocationInput = ({
   );
 };
 
-SearchLocationInput.protoTypes = {
+SearchLocationInput.propTypes = {
   options: PropTypes.array.isRequired,
   handleClick: PropTypes.func.isRequired,
   searchLocation: PropTypes.string.isRequired,
