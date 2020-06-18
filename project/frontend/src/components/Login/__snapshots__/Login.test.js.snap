@@ -84,6 +84,9 @@ exports[`<Login /> should match error snapshot 1`] = `
     <p>
       Something went wrong
     </p>
+    <p>
+      password error
+    </p>
   </div>
   <form
     className="Login__form"

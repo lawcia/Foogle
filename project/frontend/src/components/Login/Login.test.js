@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 describe("<Login />", () => {
   it("should have div", () => {
-    const wrapper = shallow(<Login error="" />);
+    const wrapper = shallow(<Login error={[]} />);
     expect(wrapper.find("div.Login").length).toEqual(1);
   });
 
@@ -14,7 +14,7 @@ describe("<Login />", () => {
     const tree = renderer
       .create(
         <Router>
-          <Login error=""/>
+          <Login error={[]}/>
         </Router>
       )
       .toJSON();
@@ -25,7 +25,7 @@ describe("<Login />", () => {
     const tree = renderer
       .create(
         <Router>
-          <Login error="Something went wrong" />
+          <Login error={["Something went wrong", "password error"]} />
         </Router>
       )
       .toJSON();

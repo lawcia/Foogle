@@ -7,25 +7,30 @@ import { connect } from "react-redux";
 import { loginUser } from "../../redux/actions/authActions";
 import "./Login.css";
 
-export const Login = ({loginError, loginUser}) => {
+export const Login = ({ error, loginUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginUser({username, password})
-    .catch(error => console.log(error))
+    loginUser({ username, password }).catch((error) => console.log(error));
   };
-
-  
 
   return (
     <div className="Login">
       <img className="Login__logo" src={logo} alt="foogle logo" />
       <h3 className="Login__heading">Welcome back</h3>
-      {(loginError && loginError.length > 0) && <div className="Login--error"><p>{loginError[0]}</p></div>}
+      {error && error.length > 0 && (
+        <div className="Login--error">
+          {error.map((error) => (
+            <p>{error}</p>
+          ))}
+        </div>
+      )}
       <form className="Login__form" onSubmit={handleSubmit}>
-        <label className="Login__label" htmlFor="username">Username</label>
+        <label className="Login__label" htmlFor="username">
+          Username
+        </label>
         <input
           className="input input-m Login__input"
           onChange={(e) => setUsername(e.target.value)}
@@ -33,7 +38,9 @@ export const Login = ({loginError, loginUser}) => {
           name="username"
           value={username}
         />
-        <label className="Login__label" htmlFor="password">Password</label>
+        <label className="Login__label" htmlFor="password">
+          Password
+        </label>
         <input
           className="input input-m Login__input"
           onChange={(e) => setPassword(e.target.value)}
@@ -44,7 +51,9 @@ export const Login = ({loginError, loginUser}) => {
         <Button value="Log in" colour="blue" />
       </form>
       <div>
-        <p>New to foogle? <Link to="/signup">Create an account</Link></p>
+        <p>
+          New to foogle? <Link to="/signup">Create an account</Link>
+        </p>
       </div>
     </div>
   );
@@ -57,14 +66,12 @@ Login.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    loginError: state.authReducer.loginError,
+    error: state.authReducer.loginError,
   };
 };
 
 const mapDispatchToProps = {
   loginUser,
 };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
