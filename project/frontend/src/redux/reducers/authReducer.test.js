@@ -17,5 +17,18 @@ describe("auth reducer", () => {
       })
   })
 
+  it("should return state with login error message", () => {
+
+    const error = ['Something went wrong'];
+
+    expect(authReducer(undefined, {
+      type: types.LOGIN_ERROR,
+      error
+    })).toEqual({
+      ...initialState,
+      loginError: error, 
+      isAuthenticated: false
+    })
+  })
 
 })

@@ -69,10 +69,7 @@ class App extends React.Component {
               {this.state.loggedIn ? (
                 <Redirect to="/favourites" />
               ) : (
-                <Login
-                  signUpHandler={this.signUpHandler}
-                  setUsername={this.setUsername}
-                />
+                <Login />
               )}
             </Route>
             <Route exact path="/logout">
