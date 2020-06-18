@@ -47,7 +47,7 @@ describe("Authorisation actions loginUser()", () => {
 
     const store = mockStore({});
 
-    return store.dispatch(authActions.loadFeatures({
+    return store.dispatch(authActions.loginUser({
       username,
       password
     })).then(() => {
