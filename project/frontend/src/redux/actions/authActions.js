@@ -15,6 +15,13 @@ export function loginUserSuccess(username) {
   }
 }
 
+export function loginUserError(error) {
+  return {
+    type: types.LOGIN_ERROR,
+    error
+  }
+}
+
 export function loginUser(data) {
   return function (dispatch) {
     dispatch(loginUserRequest(data))

@@ -67,4 +67,43 @@ describe("Authorisation actions loginUser()", () => {
     expect(action).toEqual(expectedAction);
   })
 
+  it("should create LOGIN_ERROR and LOGIN_REQUEST when api call fails", () => {
+
+    const loginDetails = {
+      username: "user1",
+      password: "password123&*"
+    }
+
+    const error = {
+      response: {
+        data: "Something went wrong"
+      }
+    }
+
+    axios.post.mockImplementationOnce(() => Promise.reject(error));
+
+    global.localStorage = {
+      setItem: jest.fn()
+    };
+
+    const expectedAction = [{
+        type: types.LOGIN_REQUEST,
+        data: loginDetails
+      },
+      {
+        type: types.LOGIN_ERROR,
+        error
+      }
+    ]
+
+    const store = mockStore({});
+
+    return store.dispatch(authActions.loginUser(loginDetails)).then(() => {
+      expect(axios.post).toHaveBeenCalled();
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+
+
 })
