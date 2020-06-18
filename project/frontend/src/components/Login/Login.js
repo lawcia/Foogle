@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../../redux/actions/authActions";
 import "./Login.css";
 
-export const Login = ({error, loginUser}) => {
+export const Login = ({loginError, loginUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,11 +17,13 @@ export const Login = ({error, loginUser}) => {
     .catch(error => console.log(error))
   };
 
+  
+
   return (
     <div className="Login">
       <img className="Login__logo" src={logo} alt="foogle logo" />
       <h3 className="Login__heading">Welcome back</h3>
-      {error.length > 0 && <div className="Login--error"><p>{error}</p></div>}
+      {(loginError && loginError.length > 0) && <div className="Login--error"><p>{loginError[0]}</p></div>}
       <form className="Login__form" onSubmit={handleSubmit}>
         <label className="Login__label" htmlFor="username">Username</label>
         <input
@@ -48,16 +50,16 @@ export const Login = ({error, loginUser}) => {
   );
 };
 
-Login.protoTypes = {
+Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  loginError: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    error: state.loginError[0]
-  }
-}
+    loginError: state.authReducer.loginError,
+  };
+};
 
 const mapDispatchToProps = {
   loginUser,
@@ -65,4 +67,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

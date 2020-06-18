@@ -1,10 +1,14 @@
 export default {
-  matchedLocation: '',
-  latitude: '',
-  longitude: '',
-  features: [],
-  keyword: '',
-  isAuthenticated: false,
-  username: '',
-  loginError: []
+  search: {
+    matchedLocation: '',
+    latitude: '',
+    longitude: '',
+    features: [],
+    keyword: '',
+  },
+  auth: {
+    isAuthenticated: false,
+    username: '',
+    loginError: []
+  }
 }

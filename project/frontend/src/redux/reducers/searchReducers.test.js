@@ -8,7 +8,7 @@ import {
 describe("search reducer", () => {
   it("should return initial state", () => {
     expect(searchReducer(undefined, {}))
-      .toEqual(initialState)
+      .toEqual(initialState.search)
   })
 
   it("should return state with features data", () => {
@@ -17,7 +17,7 @@ describe("search reducer", () => {
         features: data.features
       }))
       .toEqual({
-        ...initialState,
+        ...initialState.search,
         features: data.features
       })
   })
@@ -31,7 +31,7 @@ describe("search reducer", () => {
       type: types.GET_CURRENT_POSITION_SUCCESS,
       coords
     })).toEqual({
-      ...initialState,
+      ...initialState.search,
       longitude: coords.longitude,
       latitude: coords.latitude
     })
@@ -44,7 +44,7 @@ describe("search reducer", () => {
       type: types.GET_CURRENT_LOCATION_NAME_SUCCESS,
       location: placeName
     })).toEqual({
-      ...initialState,
+      ...initialState.search,
       matchedLocation: placeName
     })
   })
@@ -59,7 +59,7 @@ describe("search reducer", () => {
       type: types.UPDATE_COORDINATES,
       coords
     })).toEqual({
-      ...initialState,
+      ...initialState.search,
       longitude: coords.longitude, 
       latitude: coords.latitude
     })
@@ -72,7 +72,7 @@ describe("search reducer", () => {
       type: types.UPDATE_SEARCH_KEYWORD,
       keyword
     })).toEqual({
-      ...initialState,
+      ...initialState.search,
       keyword
     })
   })

@@ -11,7 +11,7 @@ describe("auth reducer", () => {
         username
       }))
       .toEqual({
-        ...initialState,
+        ...initialState.auth,
         username,
         isAuthenticated: true 
       })
@@ -25,7 +25,7 @@ describe("auth reducer", () => {
       type: types.LOGIN_ERROR,
       error
     })).toEqual({
-      ...initialState,
+      ...initialState.auth,
       loginError: error, 
       isAuthenticated: false
     })
