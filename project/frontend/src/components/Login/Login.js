@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import Button from "../Buttons/Button";
 import logo from "../../images/foogle.png";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../redux/actions/authActions";
 import "./Login.css";
 
-const Login = ({error}) => {
+const error = "";
+
+export const Login = ({error, loginUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    loginUser({username, password})
+    .catch(error => console.log(error))
   };
 
   return (
@@ -43,4 +50,21 @@ const Login = ({error}) => {
   );
 };
 
-export default Login;
+Login.protoTypes = {
+  loginUser: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    error: state.loginError[0]
+  }
+}
+
+const mapDispatchToProps = {
+  loginUser,
+};
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
