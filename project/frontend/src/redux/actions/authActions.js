@@ -28,6 +28,7 @@ export function loginUser(data) {
     return (
       authApi.login(data.username, data.password)
       .then((username) => dispatch(loginUserSuccess(username)))
+      .catch((error) => dispatch(loginUserError(error)))
     )
   }
 }
