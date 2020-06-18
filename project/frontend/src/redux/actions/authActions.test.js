@@ -51,6 +51,20 @@ describe("Authorisation actions loginUser()", () => {
       expect(axios.post).toHaveBeenCalled();
       expect(store.getActions()).toEqual(expectedAction);
     });
+  });
+
+  it("should create LOGIN_ERROR when user login fails", () => {
+
+    const error = "Something went wrong"
+
+    const expectedAction = {
+      type: types.LOGIN_ERROR,
+      error
+    };
+
+    const action = authActions.loginUserError(error);
+
+    expect(action).toEqual(expectedAction);
   })
 
 })
