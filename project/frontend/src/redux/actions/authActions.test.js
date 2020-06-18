@@ -19,12 +19,14 @@ describe("Authorisation actions loginUser()", () => {
 
   it("should create LOGIN_SUCCESS and LOGIN_REQUEST when logging in user", () => {
 
-    const username = "user1"
-    const password = "password123&*"
+    const loginDetails = {
+      username: "user1",
+      password: "password123&*"
+    }
 
     axios.post.mockResolvedValueOnce({
       data: {
-        username,
+        username: loginDetails.username,
         token: "sampletoken"
       }
     });
@@ -35,22 +37,17 @@ describe("Authorisation actions loginUser()", () => {
 
     const expectedAction = [{
         type: types.LOGIN_REQUEST,
-        data: {
-          username,
-          password
-        }
+        data: loginDetails
       },
       {
-        type: types.LOGIN_SUCCESS
+        type: types.LOGIN_SUCCESS,
+        username: loginDetails.username
       }
     ]
 
     const store = mockStore({});
 
-    return store.dispatch(authActions.loginUser({
-      username,
-      password
-    })).then(() => {
+    return store.dispatch(authActions.loginUser(loginDetails)).then(() => {
       expect(axios.post).toHaveBeenCalled();
       expect(store.getActions()).toEqual(expectedAction);
     });

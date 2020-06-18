@@ -17,7 +17,7 @@ export function loginUserSuccess(username) {
 
 export function loginUser(data) {
   return function (dispatch) {
-    dispatch(loginUserRequest())
+    dispatch(loginUserRequest(data))
     return (
       authApi.login(data.username, data.password)
       .then((username) => dispatch(loginUserSuccess(username)))
