@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import HomePage from "./Pages/HomePage";
-import Results from "./Results";
+import ResultsPage from "./ResultsPage";
 import Favourites from "./Favourites";
 import Login from "./Login/Login";
 import Logout from "./Logout";
@@ -63,7 +63,7 @@ class App extends React.Component {
           <Navigation loggedIn={this.state.loggedIn} />
           <Switch>
             <Route path="/results">
-              <Results />
+              <ResultsPage />
             </Route>
             <Route exact path="/login">
               {this.state.loggedIn ? (
