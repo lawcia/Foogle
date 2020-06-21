@@ -22,8 +22,8 @@ export const Login = ({ error, loginUser }) => {
       <h3 className="Login__heading">Welcome back</h3>
       {error && error.length > 0 && (
         <div className="Login--error">
-          {error.map((error) => (
-            <p>{error}</p>
+          {error.map((error, index) => (
+            <p key={index}>{error}</p>
           ))}
         </div>
       )}
