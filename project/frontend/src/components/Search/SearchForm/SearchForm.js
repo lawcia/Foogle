@@ -86,7 +86,7 @@ SearchForm.propTypes = {
   features: PropTypes.array.isRequired,
   loadFeatures: PropTypes.func.isRequired,
   getCurrentPosition: PropTypes.func.isRequired,
-  matchedLocation: PropTypes.string,
+  matchedLocation: PropTypes.string.isRequired,
   updateCoordinates: PropTypes.func.isRequired,
   updateSearchKeyword: PropTypes.func.isRequired,
 };

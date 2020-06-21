@@ -12,7 +12,14 @@ jest.mock('react-router-dom', () => ({
 describe("<Search Form />", () => {
 
   it("Should render search location input", () => {
-    const wrapper = shallow(<SearchForm />);
+    const wrapper = shallow(<SearchForm  
+                             features={[]}
+                             loadFeatures={jest.fn()}
+                             getCurrentPosition={jest.fn()}
+                             matchedLocation=""
+                             updateCoordinates={jest.fn()}
+                             updateSearchKeyword={jest.fn()} 
+                             />);
     expect(wrapper.find("SearchLocationInput").length).toEqual(1);
   })
 
@@ -22,7 +29,9 @@ describe("<Search Form />", () => {
                            loadFeatures={jest.fn()}
                            getCurrentPosition={jest.fn()}
                            matchedLocation=""
-                           updateCoordinates={jest.fn()}/>);
+                           updateCoordinates={jest.fn()}
+                           updateSearchKeyword={jest.fn()}
+                           />);
     wrapper.find("input[name='searchLocation']").simulate("click");
     wrapper.update();
     expect(wrapper.find("input[name='searchLocation']").props().value).toEqual("");
@@ -31,7 +40,14 @@ describe("<Search Form />", () => {
   })
 
   it("should display option to use current location", () => {
-    const wrapper = mount(<SearchForm features={data.features} />);
+    const wrapper = mount(<SearchForm 
+                           features={data.features} 
+                           loadFeatures={jest.fn()}
+                           getCurrentPosition={jest.fn()}
+                           matchedLocation=""
+                           updateCoordinates={jest.fn()}
+                           updateSearchKeyword={jest.fn()}
+                           />);
     wrapper.find("input[name='searchLocation']").simulate("click");
     expect(wrapper.find(".current-location").text()).toEqual("Use current location");
   })

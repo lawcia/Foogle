@@ -1,21 +1,39 @@
 import React from "react";
-import { Login } from "./Login";
-import { shallow } from "enzyme";
+import  { Login }  from "./Login";
+import { mount } from "enzyme";
 import renderer from "react-test-renderer";
-import { BrowserRouter as Router } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+
 
 describe("<Login />", () => {
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
   it("should have div", () => {
-    const wrapper = shallow(<Login error={[]} />);
+    const wrapper = mount(
+                          <MemoryRouter>
+                            <Login
+                             error={[]} 
+                             loginUser={jest.fn()}
+                             isAuthenticated={false} 
+                             />
+                           </MemoryRouter>
+                             );
     expect(wrapper.find("div.Login").length).toEqual(1);
   });
 
   it("should match default snapshot", () => {
-    const tree = renderer
-      .create(
-        <Router>
-          <Login error={[]}/>
-        </Router>
+
+    const tree = renderer.create(
+      <MemoryRouter>
+          <Login
+           error={[]} 
+           loginUser={jest.fn()}
+           isAuthenticated={false} 
+           />
+      </MemoryRouter>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -24,9 +42,13 @@ describe("<Login />", () => {
   it("should match error snapshot", () => {
     const tree = renderer
       .create(
-        <Router>
-          <Login error={["Something went wrong", "password error"]} />
-        </Router>
+        <MemoryRouter>
+          <Login
+           error={["Something went wrong", "password error"]} 
+           loginUser={jest.fn()}
+           isAuthenticated={false}
+           />
+        </MemoryRouter>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

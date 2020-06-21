@@ -12,8 +12,8 @@ describe("<Search Location Input />", () => {
   beforeEach(() => {
     wrapper = shallow(<SearchLocationInput 
                       options={data.features} 
+                      handleClick={jest.fn()}
                       searchLocation=""
-                      setSearchLocation={jest.fn()}
                       handleChange={handleChange}
                       setShowDropdown={setShowDropdown}
                       showDropdown={true}
@@ -38,13 +38,13 @@ describe("<Search Location Input />", () => {
 
   it("should not render dropdown", () => {
     let searchWrapper = shallow(<SearchLocationInput 
-      options={data.features} 
-      searchLocation=""
-      setSearchLocation={jest.fn()}
-      handleChange={handleChange}
-      setShowDropdown={jest.fn()}
-      showDropdown={false}
-      />)
+                                  options={data.features} 
+                                  searchLocation=""
+                                  handleClick={jest.fn()}
+                                  handleChange={handleChange}
+                                  setShowDropdown={jest.fn()}
+                                  showDropdown={false}
+                                 />)
     expect(searchWrapper.find("#place-options").length).toEqual(0);
     expect(searchWrapper.find(".place-option").length).toEqual(0);
   })
@@ -53,7 +53,7 @@ describe("<Search Location Input />", () => {
     let searchWrapper = shallow(<SearchLocationInput 
                                  options={[]}
                                  searchLocation=""
-                                 setSearchLocation={jest.fn()}
+                                 handleClick={jest.fn()}
                                  handleChange={handleChange}
                                  setShowDropdown={setShowDropdown}
                                  showDropdown={false} />);
@@ -79,7 +79,7 @@ describe("<Search Location Input />", () => {
     let searchWrapper = shallow(<SearchLocationInput 
       options={data.features} 
       searchLocation=""
-      setSearchLocation={jest.fn()}
+      handleClick={jest.fn()}
       handleChange={handleChange}
       setShowDropdown={setShowDropdown}
       showDropdown={false}

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../Buttons/Button";
 import logo from "../../images/foogle.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/actions/authActions";
 import "./Login.css";
 
-export const Login = ({ error, loginUser }) => {
+export const Login = ({ error, loginUser, isAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +15,12 @@ export const Login = ({ error, loginUser }) => {
     event.preventDefault();
     loginUser({ username, password }).catch((error) => console.log(error));
   };
+
+  let history = useHistory();
+
+  useEffect(() => {
+    isAuthenticated ? history.push("/favourites") : null;
+  }, [isAuthenticated])
 
   return (
     <div className="Login">
@@ -61,12 +67,14 @@ export const Login = ({ error, loginUser }) => {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  loginError: PropTypes.array.isRequired,
+  error: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     error: state.authReducer.loginError,
+    isAuthenticated: state.authReducer.isAuthenticated,
   };
 };
 
