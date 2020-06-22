@@ -94,7 +94,7 @@ SearchForm.propTypes = {
 const mapStateToProps = (state) => {
   return {
     features: state.searchReducer.features,
-    matchedLocation: state.searchReducer.Location,
+    matchedLocation: state.searchReducer.matchedLocation,
   };
 };
 
