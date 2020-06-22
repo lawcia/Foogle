@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Restaurant /> should match snapshot 1`] = `
+<div
+  class="card"
+>
+  <header
+    class="card-header"
+  >
+    <p
+      class="card-header-title"
+    >
+      Flat Iron
+    </p>
+  </header>
+  <div
+    class="card-content"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="flex"
+      >
+        <p
+          className="flex-info"
+        >
+          Location
+          <br />
+          <b>
+            17 Beak Street, Soho W1F 9RW
+          </b>
+        </p>
+        <p
+          className="flex-info"
+        >
+          Cuisines
+          <br />
+          <b>
+            Steak
+          </b>
+        </p>
+        <p
+          className="flex-info"
+        >
+          Cost for two
+          <br />
+          <b>
+            £
+            35
+          </b>
+        </p>
+        <p
+          className="flex-info"
+        >
+          User ratings
+          <br />
+          <b>
+            4.9
+          </b>
+        </p>
+        <p
+          className="flex-info"
+        >
+          Has online delivery
+          <br />
+          <i
+            class="far fa-times-circle"
+          />
+        </p>
+        <p
+          className="flex-info"
+        >
+          Is delivering now
+          <br />
+          <b>
+            <i
+              class="far fa-times-circle"
+            />
+          </b>
+        </p>
+        <br />
+        <div
+          class="tags"
+        >
+          <span
+            class="tag is-primary"
+          >
+            Highlights
+          </span>
+          <span
+            className="tag"
+          >
+            Cash
+          </span>
+          <span
+            className="tag"
+          >
+            Lunch
+          </span>
+          <span
+            className="tag"
+          >
+            Serves Alcohol
+          </span>
+          <span
+            className="tag"
+          >
+            Credit Card
+          </span>
+          <span
+            className="tag"
+          >
+            Dinner
+          </span>
+          <span
+            className="tag"
+          >
+            Indoor Seating
+          </span>
+          <span
+            className="tag"
+          >
+            Group Meal
+          </span>
+          <span
+            className="tag"
+          >
+            Wifi
+          </span>
+          <span
+            className="tag"
+          >
+            Fullbar
+          </span>
+        </div>
+      </div>
+      <p
+        className="align-text padding-top"
+      >
+        Opening hours
+        <br />
+        <b>
+          12 Noon to 11 PM (Mon-Wed),12 Noon to 11:30 PM (Thu),12 Noon to 12 Midnight (Fri),11:45 AM to 12 Midnight (Sat),12 Noon to 10:30 PM (Sun)
+        </b>
+      </p>
+      <div />
+      <br />
+      <div
+        className="photo-gallery"
+      >
+        <img
+          alt="Flat Iron"
+          className="res-photos"
+          src="https://b.zmtcdn.com/data/reviews_photos/a2d/f68c54d3e7e5062286c1a1d07954ea2d_1568953751.jpg?impolicy=newcropandfit&cropw=805&croph=805&cropoffsetx=157&cropoffsety=0&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore"
+        />
+      </div>
+    </div>
+  </div>
+  <footer
+    class="card-footer"
+  >
+    <a
+      class="card-footer-item"
+      onClick={[Function]}
+    >
+      Show Photos
+    </a>
+    <a
+      class="card-footer-item"
+      onClick={[Function]}
+    >
+      Add to Favourites
+    </a>
+  </footer>
+</div>
+`;
