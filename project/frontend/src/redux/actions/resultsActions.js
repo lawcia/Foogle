@@ -16,10 +16,10 @@ export function loadRestuarantsRequest(){
 
 export function loadRestaurants(){
   return function (dispatch, getState) {
-    const { matchedLocation, latitude, longitude, keyword } = getState().searchReducer;
+    const { latitude, longitude, keyword } = getState().search;
     dispatch(loadRestuarantsRequest())
     return (
-      api.getRestaurants(matchedLocation, latitude, longitude, keyword)
+      api.getRestaurants(latitude, longitude, keyword)
       .then(restaurants => dispatch(loadRestuarantsSuccess(restaurants)))
       )
   }

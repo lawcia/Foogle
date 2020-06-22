@@ -19,7 +19,7 @@ describe('results actions loadRestaurants', () => {
       type: types.LOAD_RESTAUTANTS_REQUEST
     },{
       type: types.LOAD_RESTAUTANTS_SUCCESS,
-      restaurants
+      restaurants: data.restaurants
     }];
 
     const store = mockStore({
