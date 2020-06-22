@@ -7,8 +7,7 @@ import Restaurant from "../Restaurant/Restaurant";
 export const ResultsPage = ({ restaurants, loadRestaurants }) => {
   useEffect(() => {
     loadRestaurants().catch((error) => console.log(error));
-    console.log(restaurants)
-  }, [restaurants]);
+  }, []);
 
   return (
     <div className="ResultsPage">
