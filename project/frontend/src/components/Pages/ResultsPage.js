@@ -2,19 +2,16 @@ import React, { useEffect } from "react";
 import { loadRestaurants } from "../../redux/actions/resultsActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Restaurant from "../Restaurant/Restaurant";
 
 export const ResultsPage = ({ restaurants, loadRestaurants }) => {
   useEffect(() => {
     loadRestaurants().catch((error) => console.log(error));
-  }, []);
+  }, [restaurants]);
 
   return (
     <div className="ResultsPage">
-      {restaurants.map((restaurant) => (
-        <div className="Restaurant" key={restaurant.id}>
-          <p>{restaurant.name}</p>
-        </div>
-      ))}
+      {restaurants.length > 0 && restaurants.map((restaurant) => (<Restaurant key={restaurant.id} res={restaurant}/>))}
     </div>
   );
 };
