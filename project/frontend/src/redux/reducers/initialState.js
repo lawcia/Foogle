@@ -10,5 +10,8 @@ export default {
     isAuthenticated: false,
     username: '',
     loginError: []
+  },
+  results: {
+    restaurants: []
   }
 }
