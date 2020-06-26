@@ -20,3 +20,18 @@ export function login(username, password) {
       throw error;
     })
 }
+
+export function signup(username, password, email) {
+  return axios
+    .post("/api/v1/users", {
+      username,
+      password,
+      email
+    })
+    .then(() => {
+      return "Signup Success"
+    })
+    .catch((error) => {
+      throw error.response.data;
+    });
+}

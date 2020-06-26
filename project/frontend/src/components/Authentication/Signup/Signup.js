@@ -21,26 +21,8 @@ class Signup extends React.Component {
     if (this.state.password !== this.state.password2) {
       alert("Your passwords do not match!");
     } else {
-      let { history } = this.props;
-      axios
-        .post("http://localhost:8000/api/v1/users", {
-          username: this.state.username,
-          password: this.state.password,
-          email: this.state.email,
-        })
-        .then((response) => {
-          this.setState({ usernameError: null, emailError: null });
-          alert("You can now log in.");
-          history.push("/login");
-        })
-        .catch((error) => {
-          error.response.data.username
-            ? this.setState({ usernameError: error.response.data.username })
-            : this.setState({ usernameError: null });
-          error.response.data.email
-            ? this.setState({ emailError: error.response.data.email })
-            : this.setState({ emailError: null });
-        });
+
+      
     }
   };
 
