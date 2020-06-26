@@ -5,7 +5,7 @@ import ResultsPage from "./Pages/ResultsPage";
 import Favourites from "./Favourites";
 import Login from "./Login/Login";
 import Logout from "./Logout";
-import Signup from "./Signup";
+import SignupPage from "./Pages/SignupPage";
 import axios from "axios";
 import "./App.css";
 
@@ -79,7 +79,7 @@ class App extends React.Component {
                 <Redirect to="/login" />
               )}
             </Route>
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" component={SignupPage} />
 
             <Route exact path="/favourites">
               <Favourites username={this.state.username} />
