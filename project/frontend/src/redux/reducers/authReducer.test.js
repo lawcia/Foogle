@@ -4,6 +4,10 @@ import initialState from "./initialState";
 
 describe("auth reducer", () => {
 
+  it("should return intial state", () => {
+    expect(authReducer(undefined, {})).toEqual(initialState.auth)
+  })
+
   it("should return state with username and authorised true when login is successful", () => {
     const username = "sandy";
     expect(authReducer(undefined, {
