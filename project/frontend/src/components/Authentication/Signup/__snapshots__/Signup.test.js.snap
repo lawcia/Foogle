@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signup /> should match snapshot 1`] = `
+<div
+  className="form-div"
+>
+  <form
+    className="user-form"
+    onSubmit={[MockFunction]}
+  >
+    <input
+      className="input input-m"
+      maxLength="25"
+      minLength="3"
+      name="username"
+      onChange={[MockFunction]}
+      placeholder="Create a username"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="input input-m"
+      maxLength="50"
+      name="email"
+      onChange={[MockFunction]}
+      placeholder="Enter your email address"
+      required={true}
+      type="email"
+      value=""
+    />
+    <input
+      className="input input-m"
+      maxLength="20"
+      minLength="6"
+      name="password"
+      onChange={[MockFunction]}
+      placeholder="Create a password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <input
+      className="input input-m"
+      name="password2"
+      onChange={[MockFunction]}
+      placeholder="Please repeat your password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <button
+      className="button is-success input-m"
+    >
+      Sign up
+    </button>
+  </form>
+</div>
+`;
