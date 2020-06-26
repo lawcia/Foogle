@@ -183,7 +183,7 @@ describe("Authorisation actions signupUser()", () => {
       },
       {
         type: types.SIGNUP_ERROR,
-        error
+        error: error.response.data
       }
     ]
 
