@@ -5,9 +5,11 @@ import ResultsPage from "./Pages/ResultsPage";
 import Favourites from "./Favourites";
 import Login from "./Login/Login";
 import Logout from "./Logout";
-import Signup from "./Signup";
+import SignupPage from "./Pages/SignupPage";
 import axios from "axios";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   BrowserRouter as Router,
@@ -79,7 +81,7 @@ class App extends React.Component {
                 <Redirect to="/login" />
               )}
             </Route>
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" component={SignupPage} />
 
             <Route exact path="/favourites">
               <Favourites username={this.state.username} />
@@ -88,6 +90,7 @@ class App extends React.Component {
                 <HomePage />
             </Route>
           </Switch>
+          <ToastContainer autoClose={8000} hideProgressBar />
         </div>
       </Router>
     );

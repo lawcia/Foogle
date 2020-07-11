@@ -22,6 +22,27 @@ export function loginUserError(error) {
   }
 }
 
+export function signupUserRequest(data){
+  return {
+    type: types.SIGNUP_REQUEST,
+    data
+  }
+}
+
+export function signupUserSuccess(){
+  return {
+    type: types.SIGNUP_SUCCESS
+  }
+}
+
+export function signupUserError(error){
+  console.log(error)
+  return {
+    type: types.SIGNUP_ERROR,
+    error
+  }
+}
+
 export function loginUser(data) {
   return function (dispatch) {
     dispatch(loginUserRequest(data))
@@ -29,6 +50,17 @@ export function loginUser(data) {
       authApi.login(data.username, data.password)
       .then((username) => dispatch(loginUserSuccess(username)))
       .catch((error) => dispatch(loginUserError(error)))
+    )
+  }
+}
+
+export function signupUser(data){
+  return function (dispatch) {
+    dispatch(signupUserRequest(data))
+    return (
+      authApi.signup(data.username, data.password, data.email)
+      .then(() => dispatch(signupUserSuccess()))
+      .catch((error) => dispatch(signupUserError(error)))
     )
   }
 }

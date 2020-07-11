@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signup /> should match snapshot 1`] = `
+<div
+  className="form-div"
+>
+  <form
+    className="Signup__form"
+    onSubmit={[MockFunction]}
+  >
+    <div
+      className="Signup__row"
+    >
+      <label
+        className="Signup__label"
+        htmlFor="username"
+      >
+        Username
+      </label>
+      <input
+        className="input input-m Signup__input null"
+        id="username"
+        maxLength="25"
+        minLength="3"
+        name="username"
+        onChange={[MockFunction]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="Signup__row"
+    >
+      <label
+        className="Signup__label"
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className="input input-m Signup__input null"
+        id="email"
+        maxLength="50"
+        name="email"
+        onChange={[MockFunction]}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="Signup__row"
+    >
+      <label
+        className="Signup__label"
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="input input-m Signup__input null"
+        id="password"
+        maxLength="20"
+        minLength="6"
+        name="password"
+        onChange={[MockFunction]}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="Signup__row"
+    >
+      <label
+        className="Signup__label"
+        htmlFor="password2"
+      >
+        Repeat password
+      </label>
+      <input
+        className="input input-m Signup__input null"
+        id="password2"
+        name="password2"
+        onChange={[MockFunction]}
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="button is-primary blue"
+    >
+      Sign up
+    </button>
+  </form>
+</div>
+`;

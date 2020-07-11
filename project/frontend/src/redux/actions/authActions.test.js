@@ -104,6 +104,95 @@ describe("Authorisation actions loginUser()", () => {
     });
   });
 
+})
 
+describe("Authorisation actions signupUser()", () => {
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    axios.get.mockClear();
+  });
+
+  it("should create SIGNUP_SUCCESS and SIGNUP_REQUEST when registering a new user", () => {
+
+    const userDetails = {
+      username: "user1",
+      password: "password123&*",
+      email: "mail@mail.com"
+    }
+
+    axios.post.mockResolvedValueOnce({
+      data: {
+        username: userDetails.username,
+        email: userDetails.email
+      }
+    });
+
+
+    const expectedAction = [{
+        type: types.SIGNUP_REQUEST,
+        data: userDetails
+      },
+      {
+        type: types.SIGNUP_SUCCESS
+      }
+    ]
+
+    const store = mockStore({});
+
+    return store.dispatch(authActions.signupUser(userDetails)).then(() => {
+      expect(axios.post).toHaveBeenCalled();
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it("should create SIGNUP_ERROR when signup fails", () => {
+
+    const error = "Something went wrong"
+
+    const expectedAction = {
+      type: types.SIGNUP_ERROR,
+      error
+    };
+
+    const action = authActions.signupUserError(error);
+
+    expect(action).toEqual(expectedAction);
+  })
+
+  it("should create SIGNUP_ERROR and SIGNUP_REQUEST when api call fails", () => {
+
+    const userDetails = {
+      username: "user1",
+      password: "password123&*",
+      email: "mail@mail.com"
+    }
+
+    const error = {
+      response: {
+        data: "Something went wrong"
+      }
+    }
+
+    axios.post.mockImplementationOnce(() => Promise.reject(error));
+
+
+    const expectedAction = [{
+        type: types.SIGNUP_REQUEST,
+        data: userDetails
+      },
+      {
+        type: types.SIGNUP_ERROR,
+        error: error.response.data
+      }
+    ]
+
+    const store = mockStore({});
+
+    return store.dispatch(authActions.signupUser(userDetails)).then(() => {
+      expect(axios.post).toHaveBeenCalled();
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
 
 })

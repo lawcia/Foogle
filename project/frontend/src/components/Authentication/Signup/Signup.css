@@ -1,0 +1,32 @@
+.Signup__form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.Signup__input {
+  margin-top: 4px;
+}
+
+.Signup__row {
+  margin-bottom: 16px;
+}
+
+.Signup__input--error {
+  border: 1px solid #630700;
+}
+
+.Signup__logo {
+  width: 200px;
+}
+
+.Signup__label {
+  font-weight: 600;
+}
+
+.Signup__text--error {
+  color: #630700;
+  padding: 4px;
+}
