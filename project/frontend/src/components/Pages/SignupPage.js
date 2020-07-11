@@ -26,6 +26,7 @@ const SignupPage = () => {
       user={user}
       usernameError={null}
       emailError={null}
+      passwordError={null}
     />
   );
 };
