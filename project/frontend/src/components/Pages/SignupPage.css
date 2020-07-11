@@ -1,0 +1,53 @@
+.Signup {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+
+.Signup__logo {
+  width: 200px;
+}
+
+.Signup--right {
+  color: #32446e;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.Signup--left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.Signup__heading {
+  font-size: 30px;
+  text-align: center;
+}
+
+.Signup__lead {
+  font-size: 26px;
+}
+
+.Signup__list {
+  margin: 32px 0;
+  background-color: #e8ddce;
+  padding: 8px;
+  border-radius: 16px;
+}
+
+.Signup__listitem {
+  font-size: 20px;
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 30px;
+}
+
+@media only screen and (max-width: 700px) {
+  .Signup {
+    flex-direction: column;
+  }
+}

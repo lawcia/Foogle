@@ -36,6 +36,7 @@ export function signupUserSuccess(){
 }
 
 export function signupUserError(error){
+  console.log(error)
   return {
     type: types.SIGNUP_ERROR,
     error
