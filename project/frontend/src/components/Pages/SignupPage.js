@@ -3,23 +3,37 @@ import SignUp from "../Authentication/Signup/Signup";
 import logo from "../../images/foogle.png";
 import picture from "../../images/female-friends-hanging-out-cafe.jpg";
 import "./SignupPage.css";
+import { signupUser } from "../../redux/actions/authActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const SignupPage = () => {
+const SignupPage = ({
+  signupUser
+}) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
     password2: "",
     email: "",
   });
+  const [error, setError] = useState({
+    username: null,
+    email: null,
+    password: null
+  })
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: event.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (user.password !== user.password2) {
-      alert("Your passwords do not match");
+      setError({...error, password: {message: "Your passwords do not match"}});
+    } else {
+      signupUser(user)
     }
+
   };
 
   return (
@@ -31,9 +45,9 @@ const SignupPage = () => {
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           user={user}
-          usernameError={null}
-          emailError={null}
-          passwordError={null}
+          usernameError={error.username}
+          emailError={error.email}
+          passwordError={error.password}
         />
       </div>
       <div className="Signup--right">
@@ -48,4 +62,17 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+SignupPage.propType = {
+  signupUser: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = {
+  signupUser,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
