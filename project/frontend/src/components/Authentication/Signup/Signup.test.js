@@ -26,8 +26,8 @@ describe("<Signup />", () => {
                              emailError={null}
                              passwordError={null}
                             />);
-    expect(wrapper.find(".Signup___text--error").length).toEqual(1);
-    expect(wrapper.find(".Signup___text--error").text()).toEqual(message);
+    expect(wrapper.find(".Signup__text--error").length).toEqual(1);
+    expect(wrapper.find(".Signup__text--error").text()).toEqual(message);
     expect(wrapper.find("input.Signup__input--error").length).toEqual(1);
   })
 
@@ -41,12 +41,12 @@ describe("<Signup />", () => {
                              emailError={message}
                              passwordError={null}
                             />);
-    expect(wrapper.find(".Signup___text--error").length).toEqual(1);
-    expect(wrapper.find(".Signup___text--error").text()).toEqual(message);
+    expect(wrapper.find(".Signup__text--error").length).toEqual(1);
+    expect(wrapper.find(".Signup__text--error").text()).toEqual(message);
     expect(wrapper.find("input.Signup__input--error").length).toEqual(1);
   })
 
-  it("should show email error message", () => {
+  it("should show password error message", () => {
     const message = "this password is too short";
     const wrapper = shallow(<Signup
                              handleSubmit={jest.fn()}
@@ -56,9 +56,9 @@ describe("<Signup />", () => {
                              emailError={null}
                              passwordError={message}
                             />);
-    expect(wrapper.find(".Signup___text--error").length).toEqual(1);
-    expect(wrapper.find(".Signup___text--error").text()).toEqual(message);
-    expect(wrapper.find("input.Signup__input--error").length).toEqual(1);
+    expect(wrapper.find(".Signup__text--error").length).toEqual(1);
+    expect(wrapper.find(".Signup__text--error").text()).toEqual(message);
+    expect(wrapper.find("input.Signup__input--error").length).toEqual(2);
   })
 
   it("should not have error messages", () => {
@@ -70,7 +70,7 @@ describe("<Signup />", () => {
                              emailError={null}
                              passwordError={null}
                             />);
-    expect(wrapper.find(".Signup___text--error").length).toEqual(0);
+    expect(wrapper.find(".Signup__text--error").length).toEqual(0);
     expect(wrapper.find("input.Signup__input--error").length).toEqual(0);
   })
 })

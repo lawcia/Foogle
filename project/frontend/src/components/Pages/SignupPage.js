@@ -34,8 +34,8 @@ export const SignupPage = ({
     setError({username, email, password })
   }, [signupError])
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: event.target.value });
+  const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -44,7 +44,7 @@ export const SignupPage = ({
       setError({...error, password:"Your passwords do not match"});
     } else {
       signupUser(user).then(() => {
-        toast("✨ Account has been created. You can now login.", {
+        toast("✨ You've joined foogle. You can now login.", {
           autoClose: 15000
         })
         history.push("/login");
