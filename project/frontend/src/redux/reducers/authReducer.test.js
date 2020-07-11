@@ -35,4 +35,28 @@ describe("auth reducer", () => {
     })
   })
 
+  it("should return state with signup errors", () => {
+
+    const error = {
+      username: [],
+      email: [],
+      password: []
+    }
+    expect(authReducer(undefined, {
+      type: types.SIGNUP_ERROR,
+      error
+    })).toEqual({
+      ...initialState.auth,
+      signupError: error
+    })
+  })
+
+  it("should remove signup errors if signup is successful", () => {
+    expect(authReducer(undefined, {
+      type: types.SIGNUP_SUCCESS
+    })).toEqual({
+      ...initialState.auth,
+      signupError: null
+    })
+  })
 })
