@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SignUp from "../Authentication/Signup/Signup";
 import logo from "../../images/foogle.png";
 import picture from "../../images/female-friends-hanging-out-cafe.jpg";
@@ -6,9 +6,12 @@ import "./SignupPage.css";
 import { signupUser } from "../../redux/actions/authActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const SignupPage = ({
-  signupUser
+export const SignupPage = ({
+  signupUser,
+  error: signupError
 }) => {
   const [user, setUser] = useState({
     username: "",
@@ -22,6 +25,15 @@ const SignupPage = ({
     password: null
   })
 
+  let history = useHistory();
+
+  useEffect(() => {
+    let username = signupError?.username?  signupError.username : null;
+    let email = signupError?.email?  signupError.email : null;
+    let password = signupError?.password?  signupError.password : null;
+    setError({username, email, password })
+  }, [signupError])
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: event.target.value });
   };
@@ -29,9 +41,14 @@ const SignupPage = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user.password !== user.password2) {
-      setError({...error, password: {message: "Your passwords do not match"}});
+      setError({...error, password:"Your passwords do not match"});
     } else {
-      signupUser(user)
+      signupUser(user).then(() => {
+        toast("✨ Account has been created. You can now login.", {
+          autoClose: 15000
+        })
+        history.push("/login");
+      })
     }
 
   };
@@ -63,11 +80,13 @@ const SignupPage = ({
 };
 
 SignupPage.propType = {
-  signupUser: PropTypes.func.isRequired
+  signupUser: PropTypes.func.isRequired,
+  error: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
   return {
+    error: state.authReducer.signupError, 
   }
 }
 

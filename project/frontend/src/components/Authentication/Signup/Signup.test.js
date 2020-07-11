@@ -22,7 +22,7 @@ describe("<Signup />", () => {
                              handleSubmit={jest.fn()}
                              handleChange={jest.fn()}
                              user={{username: '', email: '', password: '', password2: ''}}
-                             usernameError={{message: message}}
+                             usernameError={message}
                              emailError={null}
                              passwordError={null}
                             />);
@@ -30,6 +30,7 @@ describe("<Signup />", () => {
     expect(wrapper.find(".Signup___text--error").text()).toEqual(message);
     expect(wrapper.find("input.Signup__input--error").length).toEqual(1);
   })
+
   it("should show email error message", () => {
     const message = "this email has been taken";
     const wrapper = shallow(<Signup
@@ -37,7 +38,7 @@ describe("<Signup />", () => {
                              handleChange={jest.fn()}
                              user={{username: '', email: '', password: '', password2: ''}}
                              usernameError={null}
-                             emailError={{message: message}}
+                             emailError={message}
                              passwordError={null}
                             />);
     expect(wrapper.find(".Signup___text--error").length).toEqual(1);
@@ -53,7 +54,7 @@ describe("<Signup />", () => {
                              user={{username: '', email: '', password: '', password2: ''}}
                              usernameError={null}
                              emailError={null}
-                             passwordError={{message: message}}
+                             passwordError={message}
                             />);
     expect(wrapper.find(".Signup___text--error").length).toEqual(1);
     expect(wrapper.find(".Signup___text--error").text()).toEqual(message);

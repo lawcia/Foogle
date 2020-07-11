@@ -31,7 +31,7 @@ const Signup = ({
             id="username"
           />
           {usernameError && (
-            <p className="Signup___text--error">{usernameError.message}</p>
+            <p className="Signup__text--error">{usernameError}</p>
           )}
         </div>
         <div className="Signup__row">
@@ -49,7 +49,7 @@ const Signup = ({
             maxLength="50"
             id="email"
           />
-          {emailError && <p className="Signup__text--error">{emailError.message}</p>}
+          {emailError && <p className="Signup__text--error">{emailError}</p>}
         </div>
         <div className="Signup__row">
           <label className="Signup__label" htmlFor="password">
@@ -68,7 +68,7 @@ const Signup = ({
             id="password"
           />
           {passwordError && (
-            <p className="Signup__text--error">{passwordError.message}</p>
+            <p className="Signup__text--error">{passwordError}</p>
           )}
         </div>
         <div className="Signup__row">
@@ -96,9 +96,9 @@ Signup.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  usernameError: PropTypes.object.isRequired,
-  emailError: PropTypes.object.isRequired,
-  passwordError: PropTypes.object.isRequired,
+  usernameError: PropTypes.string,
+  emailError: PropTypes.string,
+  passwordError: PropTypes.string,
 };
 
 export default Signup;

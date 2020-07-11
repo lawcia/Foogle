@@ -1,5 +1,5 @@
 import React from "react";
-import SignupPage from "./SignupPage";
+import { SignupPage } from "./SignupPage";
 import { shallow } from "enzyme";
 import Signup from "../Authentication/Signup/Signup";
 
