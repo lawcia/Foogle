@@ -23,7 +23,7 @@ describe('results actions loadRestaurants', () => {
     }];
 
     const store = mockStore({
-      search: {
+      searchReducer: {
         matchedLocation: '',
         latitude: '',
         longitude: '',
