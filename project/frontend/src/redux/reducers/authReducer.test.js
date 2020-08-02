@@ -60,4 +60,13 @@ describe("auth reducer", () => {
       createdUser: true
     })
   })
+
+  it("should reset createdUser to false, on signup request", () => {
+    expect(authReducer(undefined, {
+      type: types.SIGNUP_REQUEST
+    })).toEqual({
+      ...initialState.auth,
+      createdUser: false
+    })
+  })
 })
