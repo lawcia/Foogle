@@ -68,7 +68,7 @@ export const SignupPage = ({
         />
       </div>
       <div className="Signup--right">
-        <h3 className="Signup__lead">Create an account to today</h3>
+        <h3 className="Signup__lead">Create an account today</h3>
         <ul className="Signup__list">
           <li className="Signup__listitem">Save restaurants to your favourites list</li>
           <li className="Signup__listitem">Share your profile with friends</li>
