@@ -9,10 +9,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export const SignupPage = ({
-  signupUser,
-  error: signupError
-}) => {
+export const SignupPage = ({ signupUser, error: signupError }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -22,17 +19,17 @@ export const SignupPage = ({
   const [error, setError] = useState({
     username: null,
     email: null,
-    password: null
-  })
+    password: null,
+  });
 
   let history = useHistory();
 
   useEffect(() => {
-    let username = signupError?.username?  signupError.username : null;
-    let email = signupError?.email?  signupError.email : null;
-    let password = signupError?.password?  signupError.password : null;
-    setError({username, email, password })
-  }, [signupError])
+    let username = signupError?.username ? signupError.username : null;
+    let email = signupError?.email ? signupError.email : null;
+    let password = signupError?.password ? signupError.password : null;
+    setError({ username, email, password });
+  }, [signupError]);
 
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
@@ -41,22 +38,21 @@ export const SignupPage = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user.password !== user.password2) {
-      setError({...error, password:"Your passwords do not match"});
+      setError({ ...error, password: "Your passwords do not match" });
     } else {
       signupUser(user).then(() => {
-        toast("✨ You've joined foogle. You can now login.", {
-          autoClose: 15000
-        })
-        history.push("/login");
-      })
+          toast("✨ You've joined foogle. You can now login.", {
+            autoClose: 15000,
+          });
+          history.push("/login");
+      });
     }
-
   };
 
   return (
     <div className="Signup">
       <div className="Signup--left">
-      <img className="Signup__logo" src={logo} alt="foogle logo" />
+        <img className="Signup__logo" src={logo} alt="foogle logo" />
         <h3 className="Signup__heading">Create an account</h3>
         <SignUp
           handleSubmit={handleSubmit}
@@ -70,7 +66,9 @@ export const SignupPage = ({
       <div className="Signup--right">
         <h3 className="Signup__lead">Create an account today</h3>
         <ul className="Signup__list">
-          <li className="Signup__listitem">Save restaurants to your favourites list</li>
+          <li className="Signup__listitem">
+            Save restaurants to your favourites list
+          </li>
           <li className="Signup__listitem">Share your profile with friends</li>
         </ul>
         <img src={picture} alt="restaurant picture" />
@@ -81,17 +79,17 @@ export const SignupPage = ({
 
 SignupPage.propType = {
   signupUser: PropTypes.func.isRequired,
-  error: PropTypes.object
-}
+  error: PropTypes.object,
+};
 
 const mapStateToProps = (state) => {
   return {
-    error: state.authReducer.signupError, 
-  }
-}
+    error: state.authReducer.signupError,
+  };
+};
 
 const mapDispatchToProps = {
   signupUser,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
