@@ -51,12 +51,22 @@ describe("auth reducer", () => {
     })
   })
 
-  it("should remove signup errors if signup is successful", () => {
+  it("should remove signup errors and set confirmed signup state if signup is successful", () => {
     expect(authReducer(undefined, {
       type: types.SIGNUP_SUCCESS
     })).toEqual({
       ...initialState.auth,
-      signupError: null
+      signupError: null,
+      createdUser: true
+    })
+  })
+
+  it("should reset createdUser to false, on signup request", () => {
+    expect(authReducer(undefined, {
+      type: types.SIGNUP_REQUEST
+    })).toEqual({
+      ...initialState.auth,
+      createdUser: false
     })
   })
 })

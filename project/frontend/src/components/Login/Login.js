@@ -18,9 +18,9 @@ export const Login = ({ error, loginUser, isAuthenticated }) => {
 
   let history = useHistory();
 
-  useEffect(() => {
-    isAuthenticated ? history.push("/favourites") : null;
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //   isAuthenticated ? history.push("/favourites") : null;
+  // }, [isAuthenticated])
 
   return (
     <div className="Login">

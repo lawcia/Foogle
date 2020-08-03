@@ -6,6 +6,7 @@ import Favourites from "./Favourites";
 import Login from "./Login/Login";
 import Logout from "./Logout";
 import SignupPage from "./Pages/SignupPage";
+import PrivateRoute from "./PrivateRoute";
 import axios from "axios";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
@@ -27,28 +28,28 @@ class App extends React.Component {
   };
 
   //set username
-  setUsername = (username) => {
-    this.setState({ username: username, loggedIn: true });
-  };
+  // setUsername = (username) => {
+  //   this.setState({ username: username, loggedIn: true });
+  // };
 
-  componentDidMount() {
-    // get user id & jwt token from local storage
-    // then refresh the token,
-    // if token is expired logout user
-    let token = localStorage.getItem("token");
-    // let id = localStorage.getItem("id")
-    if (token) {
-      axios
-        .post("/api/v1/refresh", { token: token })
-        .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          this.setState({ loggedIn: true });
-        })
-        .catch(() => this.setState({ loggedIn: false }));
-    } else {
-      this.setState({ loggedIn: false });
-    }
-  }
+  // componentDidMount() {
+  //   // get user id & jwt token from local storage
+  //   // then refresh the token,
+  //   // if token is expired logout user
+  //   let token = localStorage.getItem("token");
+  //   // let id = localStorage.getItem("id")
+  //   if (token) {
+  //     axios
+  //       .post("/api/v1/refresh", { token: token })
+  //       .then((response) => {
+  //         localStorage.setItem("token", response.data.token);
+  //         this.setState({ loggedIn: true });
+  //       })
+  //       .catch(() => this.setState({ loggedIn: false }));
+  //   } else {
+  //     this.setState({ loggedIn: false });
+  //   }
+  // }
 
   logOut = () => {
     this.setState({ loggedIn: false });
@@ -82,10 +83,7 @@ class App extends React.Component {
               )}
             </Route>
             <Route exact path="/signup" component={SignupPage} />
-
-            <Route exact path="/favourites">
-              <Favourites username={this.state.username} />
-            </Route>
+            <PrivateRoute exact path="/favourites" component={Favourites}/>
             <Route exact path="/">
                 <HomePage />
             </Route>
