@@ -29,10 +29,10 @@ const Navigation = (props) => {
           <Link className="navbar-item" to ="/">
             Find
           </Link>
-          {props.loggedIn ?
+          {props.loggedIn &&
           <Link className="navbar-item" to="/favourites">
          My Favourites
-          </Link> : null}
+          </Link>}
           </div>
         <div className="navbar-end">
           <div className="navbar-item">
