@@ -65,28 +65,12 @@ class App extends React.Component {
         <div className="App">
           <Navigation loggedIn={this.state.loggedIn} />
           <Switch>
-            <Route path="/results">
-              <ResultsPage />
-            </Route>
-            <Route exact path="/login">
-              {this.state.loggedIn ? (
-                <Redirect to="/favourites" />
-              ) : (
-                <Login />
-              )}
-            </Route>
-            <Route exact path="/logout">
-              {this.state.loggedIn ? (
-                <Logout logOut={this.logOut} />
-              ) : (
-                <Redirect to="/login" />
-              )}
-            </Route>
+            <Route exact path="/results" component={ResultsPage} />
+            <Route exact path ="/login" component={Login}/>
+            <Route exact path="/logout" component={Logout} />
             <Route exact path="/signup" component={SignupPage} />
-            <PrivateRoute exact path="/favourites" component={Favourites}/>
-            <Route exact path="/">
-                <HomePage />
-            </Route>
+            <PrivateRoute exact path="/favourites" isAuthenticated={this.state.loggedIn} component={Favourites}/>
+            <Route exact path="/" component={HomePage} />
           </Switch>
           <ToastContainer autoClose={8000} hideProgressBar />
         </div>
